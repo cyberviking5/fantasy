@@ -4,6 +4,7 @@ require("@nomiclabs/hardhat-etherscan");
 require("dotenv").config();
 require("solidity-coverage");
 require("hardhat-deploy");
+
 /** @type import('hardhat/config').HardhatUserConfig */
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "";
 const SEPOLIA_RPC_URL =
