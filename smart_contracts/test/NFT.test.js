@@ -1,10 +1,7 @@
 const {assert,expect}=require('chai')
 const { network, deployments, ethers } = require("hardhat")
 const { developmentChains } = require("../helper-hardhat-config")
-
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
-
-
 !developmentChains.includes(network.name)
     ? describe.skip
     : describe("Basic NFT Unit Tests", function () {

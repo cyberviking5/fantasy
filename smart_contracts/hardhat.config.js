@@ -28,7 +28,7 @@ module.exports = {
       blockConfirmations: 6,
     },
   },
-  solidity: {compilers:[{version:"0.8.18"},{version:"0.6.6"}]},
+  solidity: {compilers:[{version:"0.8.18"},{version:"0.6.6"},{version:"0.8.10"}]},
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
     // customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable
