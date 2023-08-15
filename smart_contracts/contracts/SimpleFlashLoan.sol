@@ -9,9 +9,7 @@ contract SimpleFlashLoan is FlashLoanSimpleReceiverBase {
     address payable owner;
 
     constructor(address _addressProvider)
-        FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider))
-    {
-    }
+        FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) {}
 
     function fn_RequestFlashLoan(address _token, uint256 _amount) public {
         address receiverAddress = address(this);

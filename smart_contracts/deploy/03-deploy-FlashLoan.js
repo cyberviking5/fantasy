@@ -16,21 +16,20 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const {deployer}=await getNamedAccounts();
     const chainId=network.config.chainId
     // const ethUsdPriceAddress=networkConfig[chainId]["ethUsdPriceFeed"]
-    const FlashLoan=await deploy("FlashLoan",{
+    const SimpleFlashLoan=await deploy("SimpleFlashLoan",{
         from:deployer,
-        args:[],
+        args:["0x0496275d34753A48320CA58103d5220d394FF77F"],
         log:true,
         waitConfirmation:network.config.blockConfirmation || 5,
     })
-
-    if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
-        console.log("Waiting for block confirmations...")
-        // await NFT.deployTransaction.wait(6)
-        await verify(FlashLoan.address, [])
-      }
+    // if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
+    //     console.log("Waiting for block confirmations...")
+    //     // await NFT.deployTransaction.wait(6)
+    //     await verify(SimpleFlashLoan.address, [])
+    //   }
     
 
     log("----------------------------------")
     //when going for localhost or network we want to use mock
 }
-module.exports.tags=["all","FlashLoan"]
+module.exports.tags=["all","SimpleFlashLoan"]
