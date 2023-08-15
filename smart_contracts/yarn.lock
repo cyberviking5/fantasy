@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@aave/core-v3@^1.18.0":
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/@aave/core-v3/-/core-v3-1.18.0.tgz#00b2e4bebf2f12ba8c0a21b6663bb82c63d00f9a"
+  integrity sha512-vWJdJ+Ci9LEgalm0CzKpUmYh35jD0MKYK1AftrIRoiBKCDRNXL8VpQ+60ByMWwIbCy9P81Z4G5oHy6lRduERNQ==
+
 "@adraffy/ens-normalize@1.9.2":
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/@adraffy/ens-normalize/-/ens-normalize-1.9.2.tgz#60111a5d9db45b2e5cbb6231b0bb8d97e8659316"

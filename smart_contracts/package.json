@@ -9,6 +9,7 @@
     "web3": "^1.10.0"
   },
   "devDependencies": {
+    "@aave/core-v3": "^1.18.0",
     "@chainlink/contracts": "^0.6.1",
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
