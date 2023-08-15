@@ -16,7 +16,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const {deployer}=await getNamedAccounts();
     const chainId=network.config.chainId
     // const ethUsdPriceAddress=networkConfig[chainId]["ethUsdPriceFeed"]
-    const NFT=await deploy("NFT",{
+    const Gamble=await deploy("Gamble",{
         from:deployer,
         args:[],
         log:true,
@@ -26,7 +26,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
     if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
         console.log("Waiting for block confirmations...")
         // await NFT.deployTransaction.wait(6)
-        await verify(NFT.address, [])
+        await verify(Gamble.address, [])
       }
     
 
