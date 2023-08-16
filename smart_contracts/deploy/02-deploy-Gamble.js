@@ -8,7 +8,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const {deploy,log}=deployments;
     const {deployer}=await getNamedAccounts();
     const chainId=network.config.chainId
-    const value=ethers.parseEther("0.2")
+    const value=ethers.parseEther("1")
     const Gamble=await deploy("Gamble",{
         from:deployer,
         args:[value],
@@ -18,7 +18,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
 
     if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
         console.log("Waiting for block confirmations...")
-        await verify(Gamble.address, [])
+        await verify(Gamble.address, [value])
       }
     
 

@@ -21,7 +21,7 @@ const PUBLIC_KEY = process.env.PUBLIC_KEY;
             })
             it("Entry Fees",async()=>{
                 const value=await Gamble.getEntryFees();
-                assert(value.toString(),"0.2");
+                assert(value.toString(),"1");
             })
           })
           

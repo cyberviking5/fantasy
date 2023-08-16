@@ -1,0 +1,38 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Fund.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.8;\r\n\r\ncontract Fund {\r\n    mapping(address => uint256) public gamblersToAmountBet;\r\n    address[] public gamblers;\r\n\r\n    address public immutable i_owner;\r\n    uint256 public constant MINIMUM_ETHER = 0.1 ether;\r\n\r\n    \r\n    constructor(){\r\n        i_owner = msg.sender;\r\n    }\r\n\r\n    function fund() public payable {\r\n        require(msg.value>=MINIMUM_ETHER,\"not enought ETH\");\r\n        gamblersToAmountBet[msg.sender] += msg.value;\r\n        gamblers.push(msg.sender);\r\n    }\r\n\r\n    function getOwner() public view returns(address)\r\n    {\r\n        return i_owner;\r\n    }\r\n    \r\n}\r\n"
+    },
+    "contracts/Gamble.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract Gamble {\r\n    address private immutable owner;\r\n    uint256 public immutable entryFee;\r\n    enum TeamResult { NotSettled, Win, Loss }\r\n    function setResultStatusWon(address user ) public{\r\n            users[user].result=1;\r\n    }\r\n\r\n    function setResultStatusLost(address user ) public{\r\n            users[user].result=0;\r\n    }\r\n    function setResultStatusLive(address user ) public{\r\n            users[user].result=2;\r\n    }\r\n\r\n\r\n    struct User {\r\n        bool hasEntered;\r\n        uint result;\r\n    }\r\n    mapping(address => User) public users;\r\n    mapping(address => uint256) public gamblersToAmountBet;\r\n    address[] public gamblers;\r\n\r\n    event UserEntered(address user,uint256 amount);\r\n    event UserWon(address user, uint256 amount);\r\n    event UserLost(address user, uint256 amount);\r\n\r\n    constructor(uint256 _entryFee) {\r\n        owner = msg.sender;\r\n        entryFee=_entryFee;\r\n    }\r\n\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner, \"Only the owner can call this function\");\r\n        _;\r\n    }\r\n\r\n    // function setEntryFee(uint256 _entryFee) public onlyOwner {\r\n    //     entryFee = _entryFee;\r\n    // }\r\n\r\n    function enter() public payable {\r\n        require(msg.value >= (entryFee / 10**18), \"Insufficient entry fee\");\r\n        require(!users[msg.sender].hasEntered, \"You have already entered\");\r\n        gamblersToAmountBet[msg.sender] = msg.value;\r\n        gamblers.push(msg.sender);\r\n        users[msg.sender].hasEntered = true;\r\n        emit UserEntered(msg.sender,msg.value);\r\n    }\r\n\r\n    function getUserEntryStatus(address _user) public view returns (bool) {\r\n        return users[_user].hasEntered;\r\n    }\r\n\r\n    function settleTeamResult(address _user) public  {\r\n        require(users[_user].hasEntered, \"User has not entered\");\r\n            require(users[_user].result == 2, \"Result already settled\");\r\n        // users[_user].result = _result;\r\n        if (users[_user].result == 1) {\r\n            uint256 winnings = entryFee * 2;\r\n            payable(_user).transfer(winnings);\r\n            emit UserWon(_user, winnings);\r\n        } else if (users[_user].result == 0) {\r\n            uint256 lossAmount = entryFee;\r\n            emit UserLost(_user, lossAmount);\r\n        }\r\n    }\r\n    function withdraw() public onlyOwner {\r\n        payable(owner).transfer(address(this).balance);\r\n    }\r\n\r\n    function getOwner() public view returns(address)\r\n    {\r\n        return owner;\r\n    }\r\n    function getEntryFees() public view returns(uint256)\r\n    {\r\n        return entryFee;\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

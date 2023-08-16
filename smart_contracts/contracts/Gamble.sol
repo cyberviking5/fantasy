@@ -58,7 +58,7 @@ contract Gamble {
 
     function settleTeamResult(address _user) public  {
         require(users[_user].hasEntered, "User has not entered");
-            require(users[_user].result == 2, "Result already settled");
+            require(users[_user].result == 2, "Result already decided");
         // users[_user].result = _result;
         if (users[_user].result == 1) {
             uint256 winnings = entryFee * 2;
