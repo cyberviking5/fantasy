@@ -1,4 +1,3 @@
-
 const {networkConfig,developmentChains,}=require('../helper-hardhat-config.js')
 require("dotenv").config()
 const {network}=require('hardhat');
@@ -8,7 +7,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const {deploy,log}=deployments;
     const {deployer}=await getNamedAccounts();
     const chainId=network.config.chainId
-    const Gamble=await deploy("Gamble",{
+    const Fund=await deploy("Fund",{
         from:deployer,
         args:[],
         log:true,
@@ -17,10 +16,11 @@ module.exports=async({getNamedAccounts,deployments})=>{
 
     if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
         console.log("Waiting for block confirmations...")
-        await verify(Gamble.address, [])
+        await verify(Fund.address, [])
       }
     
 
     log("----------------------------------")
+    //when going for localhost or network we want to use mock
 }
-module.exports.tags=["all","Gamble"]
+module.exports.tags=["all","Fund"]

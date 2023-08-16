@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.8;
 
-error Insufficient_Bet();
-
 contract Fund {
 
 error fundme_NotOwner();
@@ -18,12 +16,14 @@ error fundme_NotOwner();
     }
 
     function fund() public payable {
-        if(msg.value<MINIMUM_ETHER)
-        {
-            revert Insufficient_Bet();
-        }
+        require(msg.value>=MINIMUM_ETHER,"not enought ETH");
         gamblersToAmountBet[msg.sender] += msg.value;
         gamblers.push(msg.sender);
+    }
+
+    function getOwner() public view returns(address)
+    {
+        return i_owner;
     }
     
 }
