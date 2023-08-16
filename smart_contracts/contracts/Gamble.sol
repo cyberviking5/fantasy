@@ -1,16 +1,72 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
-// this is pull request
-/**
- * @title Fantasy Sports
- * @dev Smart contract to facilitate fantasy sports
- */
+pragma solidity ^0.8.0;
+
 contract Gamble {
-    enum Status {
-        NO_GAME_IN_PROGRESS,
-        PRE_GAME_API,
-        PRE_GAME_USER,
-        GAME_BEGINS,
-        GAME_STOPS
+    address public owner;
+    uint256 public entryFee;
+    enum TeamResult { NotSettled, Win, Loss }
+    function setResultStatusWon(address user ) public{
+            users[user].result=1;
+    }
+
+      function setResultStatusLost(address user ) public{
+            users[user].result=0;
+    }
+       function setResultStatusLive(address user ) public{
+            users[user].result=2;
+    }
+
+
+    struct User {
+        bool hasEntered;
+        uint result;
+    }
+    mapping(address => User) public users;
+
+    event UserEntered(address user);
+    event UserWon(address user, uint256 amount);
+    event UserLost(address user, uint256 amount);
+
+    constructor(uint256 _entryFee) {
+        owner = msg.sender;
+        setEntryFee(_entryFee);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function");
+        _;
+    }
+
+    function setEntryFee(uint256 _entryFee) public onlyOwner {
+        entryFee = _entryFee;
+    }
+
+    function enter() public payable {
+        require(msg.value >= (entryFee / 10**18), "Insufficient entry fee");
+        require(!users[msg.sender].hasEntered, "You have already entered");
+
+        users[msg.sender].hasEntered = true;
+        emit UserEntered(msg.sender);
+    }
+
+    function getUserEntryStatus(address _user) public view returns (bool) {
+        return users[_user].hasEntered;
+    }
+
+    function settleTeamResult(address _user) public  {
+        require(users[_user].hasEntered, "User has not entered");
+            require(users[_user].result == 2, "Result already settled");
+        // users[_user].result = _result;
+        if (users[_user].result == 1) {
+            uint256 winnings = entryFee * 2;
+            payable(_user).transfer(winnings);
+            emit UserWon(_user, winnings);
+        } else if (users[_user].result == 0) {
+            uint256 lossAmount = entryFee;
+            emit UserLost(_user, lossAmount);
+        }
+    }
+    function withdraw() public onlyOwner {
+        payable(owner).transfer(address(this).balance);
     }
 }
