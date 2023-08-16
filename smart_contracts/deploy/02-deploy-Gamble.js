@@ -13,7 +13,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
         from:deployer,
         args:[value],
         log:true,
-        waitConfirmation:network.config.blockConfirmation || 10,
+        waitConfirmations:network.config.blockConfirmations || 10,
     })
 
     if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
