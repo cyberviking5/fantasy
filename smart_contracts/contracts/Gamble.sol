@@ -55,7 +55,9 @@ contract Gamble {
     function getUserEntryStatus(address _user) public view returns (bool) {
         return users[_user].hasEntered;
     }
-
+   function getBalance() public view returns (uint256) {
+    return address(this).balance;
+    }
     function settleTeamResult(address _user) public  {
         require(users[_user].hasEntered, "User has not entered");
             require(users[_user].result == 2, "Result already decided");
