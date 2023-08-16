@@ -20,7 +20,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
         from:deployer,
         args:["0x0496275d34753A48320CA58103d5220d394FF77F"],
         log:true,
-        waitConfirmation:network.config.blockConfirmation || 10,
+        waitConfirmations:network.config.blockConfirmations || 10,
     })
 
     //  const abc=  await SimpleFlashLoan.executeOperation("0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f",1,0.1,);
