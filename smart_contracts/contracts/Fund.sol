@@ -2,8 +2,6 @@
 pragma solidity ^0.8.8;
 
 contract Fund {
-
-error fundme_NotOwner();
     mapping(address => uint256) public gamblersToAmountBet;
     address[] public gamblers;
 

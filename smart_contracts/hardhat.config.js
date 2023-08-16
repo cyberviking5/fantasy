@@ -25,7 +25,7 @@ module.exports = {
       url: SEPOLIA_RPC_URL,
       accounts: [PRIVATE_KEY],
       chainId: 11155111,
-      blockConfirmations: 6,
+      blockConfirmations: 10,
     },
   },
   solidity: {compilers:[{version:"0.8.18"},{version:"0.6.6"},{version:"0.8.10"}]},
