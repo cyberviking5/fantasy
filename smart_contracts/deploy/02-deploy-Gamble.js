@@ -8,9 +8,10 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const {deploy,log}=deployments;
     const {deployer}=await getNamedAccounts();
     const chainId=network.config.chainId
+    const value=ethers.parseEther("0.2")
     const Gamble=await deploy("Gamble",{
         from:deployer,
-        args:[],
+        args:[value],
         log:true,
         waitConfirmation:network.config.blockConfirmation || 10,
     })

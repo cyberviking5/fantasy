@@ -2,17 +2,17 @@
 pragma solidity ^0.8.0;
 
 contract Gamble {
-    address public owner;
-    uint256 public entryFee;
+    address private immutable owner;
+    uint256 public immutable entryFee;
     enum TeamResult { NotSettled, Win, Loss }
     function setResultStatusWon(address user ) public{
             users[user].result=1;
     }
 
-      function setResultStatusLost(address user ) public{
+    function setResultStatusLost(address user ) public{
             users[user].result=0;
     }
-       function setResultStatusLive(address user ) public{
+    function setResultStatusLive(address user ) public{
             users[user].result=2;
     }
 
@@ -22,14 +22,16 @@ contract Gamble {
         uint result;
     }
     mapping(address => User) public users;
+    mapping(address => uint256) public gamblersToAmountBet;
+    address[] public gamblers;
 
-    event UserEntered(address user);
+    event UserEntered(address user,uint256 amount);
     event UserWon(address user, uint256 amount);
     event UserLost(address user, uint256 amount);
 
     constructor(uint256 _entryFee) {
         owner = msg.sender;
-        setEntryFee(_entryFee);
+        entryFee=_entryFee;
     }
 
     modifier onlyOwner() {
@@ -37,16 +39,17 @@ contract Gamble {
         _;
     }
 
-    function setEntryFee(uint256 _entryFee) public onlyOwner {
-        entryFee = _entryFee;
-    }
+    // function setEntryFee(uint256 _entryFee) public onlyOwner {
+    //     entryFee = _entryFee;
+    // }
 
     function enter() public payable {
         require(msg.value >= (entryFee / 10**18), "Insufficient entry fee");
         require(!users[msg.sender].hasEntered, "You have already entered");
-
+        gamblersToAmountBet[msg.sender] = msg.value;
+        gamblers.push(msg.sender);
         users[msg.sender].hasEntered = true;
-        emit UserEntered(msg.sender);
+        emit UserEntered(msg.sender,msg.value);
     }
 
     function getUserEntryStatus(address _user) public view returns (bool) {
@@ -68,5 +71,14 @@ contract Gamble {
     }
     function withdraw() public onlyOwner {
         payable(owner).transfer(address(this).balance);
+    }
+
+    function getOwner() public view returns(address)
+    {
+        return owner;
+    }
+    function getEntryFees() public view returns(uint256)
+    {
+        return entryFee;
     }
 }
