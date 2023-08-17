@@ -22,7 +22,8 @@
 #scroller h4{
     display: inline-block;
     font-size: 100px;
-    font-family: "timmons ny 2.0";
+    font-family: 'Six Caps', sans-serif;
+    font-weight: 600;
     margin-right:50px;
     transition: all linear .1s;
     color: black;
