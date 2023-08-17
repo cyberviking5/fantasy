@@ -1,3 +1,61 @@
 .home {
+    color:white;
     background-color: black;
 }
+.landing-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main{
+    display: flex;
+    width:60%;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap:10%;
+    padding: 100px 0;
+
+}
+.hero{
+    align-self: start;
+}
+.hero-heading{
+    color: #FFF;
+    font-family: Druk Cyr;
+    font-size: 137.3px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120px;
+}
+.hero-heading span{
+    color:red;
+}
+.main-lastline{
+    display: flex;
+    align-self: start;
+}
+.hero-buttons{
+    height:30%;
+    display: flex;
+    gap:2%;
+}
+.hero-buttons button{
+    height:inherit;
+    width:20%;
+    gap:20%;
+    background-color: #222;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    border-radius: 5px;
+    color:white;
+}
+.main-lastline{
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 19.55px;
+    font-style: normal;
+    font-weight: 900;
+}
+

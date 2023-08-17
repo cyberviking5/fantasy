@@ -1,4 +1,5 @@
 .navbar{
+    position:sticky;
     padding: 10px 50px;
     /* margin: 15px; */
     display :flex;
@@ -31,16 +32,21 @@
     gap: 10px;
     width: 82%;
     font-family: 'Druk Cyr';
-    font-size: 25px;
-    text-decoration: underline;
-    text-underline-offset: 7px;
-    
+    font-size: 25px;   
 }
-.nav-part2-main{
+.nav-part2-main1{
     display: flex;
     flex-direction: row;
     align-items: start;
-    gap: 50px;
+    gap: 70px;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+.nav-part2-main2{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 70px;
 
 }
 .nav-menu{
@@ -55,10 +61,8 @@
 
 
 
-/* opened nav css */
-
-
 .opened-nav{
+    position:sticky;
     min-height: 100vh;
     /* padding: 10px 50px; */
     width: 100%;
