@@ -1,0 +1,40 @@
+#scroller{
+    /* height: 20%; */
+    margin: 40px 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    background-color: white;
+}
+#scroller::-webkit-scrollbar{
+    display:none;
+}
+#scroller-in{
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+#scroller h4{
+    display: inline-block;
+    font-size: 100px;
+    font-family: "timmons ny 2.0";
+    margin-right:50px;
+    transition: all linear .1s;
+    color: black;
+    
+}
+
+
+@keyframes scroll {
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
