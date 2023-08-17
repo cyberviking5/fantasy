@@ -5,7 +5,8 @@ contract Gamble {
     address private immutable owner;
     uint256 public immutable entryFee;
     // enum TeamResult { NotSettled, Win, Loss }
-    bool hasMatchCompleted;
+    bool private hasMatchCompleted;
+    bool private hasMatchStarted=false;
     function setMatchStatus( address _user) private {
         if(users[_user].result==1 || users[_user].result==2){
             hasMatchCompleted=true;
@@ -54,8 +55,8 @@ contract Gamble {
 
     function enter() public payable {
         require(msg.value >= (entryFee / 10**18), "Insufficient entry fee");
+        require(!hasMatchStarted,"match already started");
         require(!users[msg.sender].hasEntered, "You have already entered");
-        require(!hasMatchCompleted,"You can't bet now match already complted");
         gamblersToAmountBet[msg.sender] = msg.value;
         gamblers.push(msg.sender);
         users[msg.sender].hasEntered = true;
