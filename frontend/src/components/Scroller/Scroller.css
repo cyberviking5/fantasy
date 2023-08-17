@@ -1,5 +1,5 @@
 #scroller{
-    /* height: 20%; */
+    min-height: 10vh;
     margin: 40px 0;
     white-space: nowrap;
     overflow-x: auto;

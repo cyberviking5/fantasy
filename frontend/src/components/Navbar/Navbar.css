@@ -61,7 +61,7 @@
 
 
 .opened-nav{
-    position:sticky;
+    position:relative;
     min-height: 100vh;
     /* padding: 10px 50px; */
     width: 100%;

@@ -16,34 +16,10 @@ const Navbar = () => {
 
   return (
     <>
+    
       
       {nav ?
       
-      <div className='navbar linear duration-500'>
-      <div className='nav-part1'>
-          <span className='logoHeading'>METABET</span>
-          <img src={logo} alt="" />
-      </div>
-      <div className='nav-part2'>
-        <div className='nav-part2-main1' >
-        <div className='nav-games'>GAMES</div>
-        <div className='nav-team'>OUR TEAM</div>
-        </div>
-        <div className='nav-part2-main2'>
-        <div className='nav-connect'>CONNECT</div>
-        <div className='nav-menu' onClick={handleNav}><div>MENU
-          </div>
-          <div className='menu-icon-open'>
-            <AiOutlineMenu size={20}/>
-          </div>
-        </div>
-        </div>
-       
-          
-      </div>
-  </div>
-
-        :
       <div className='opened-nav linear duration-500 ' >
         
       <div className='opened-nav-top'>
@@ -78,6 +54,33 @@ const Navbar = () => {
     </div>
 
     </div>
+
+        :
+
+        <div className='navbar linear duration-500'>
+        <div className='nav-part1'>
+            <span className='logoHeading'>METABET</span>
+            <img src={logo} alt="" />
+        </div>
+        <div className='nav-part2'>
+          <div className='nav-part2-main1' >
+          <div className='nav-games'>GAMES</div>
+          <div className='nav-team'>OUR TEAM</div>
+          </div>
+          <div className='nav-part2-main2'>
+          <div className='nav-connect'>CONNECT</div>
+          <div className='nav-menu' onClick={handleNav}><div>MENU
+            </div>
+            <div className='menu-icon-open'>
+              <AiOutlineMenu size={20}/>
+            </div>
+          </div>
+          </div>
+         
+            
+        </div>
+    </div>
+     
     }
         
 
