@@ -55,6 +55,7 @@ contract Gamble {
     function enter() public payable {
         require(msg.value >= (entryFee / 10**18), "Insufficient entry fee");
         require(!users[msg.sender].hasEntered, "You have already entered");
+        require(!hasMatchCompleted,"You can't bet now match already complted");
         gamblersToAmountBet[msg.sender] = msg.value;
         gamblers.push(msg.sender);
         users[msg.sender].hasEntered = true;
@@ -82,7 +83,7 @@ contract Gamble {
     }
     function withdraw() public onlyOwner {
 
-        require(hasMatchCompleted,"wait for match completion")
+        require(hasMatchCompleted,"wait for match completion");
         payable(owner).transfer(address(this).balance);
     }
 
