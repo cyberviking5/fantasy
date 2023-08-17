@@ -6,8 +6,8 @@
     flex-direction: row;
     color:white;
     width: 100%;
-    font-family: "timmons ny 2.0";
-
+    font-family: 'Six Caps', sans-serif;
+    font-weight: 600;
 }
 .nav-part1{
     display: flex;
@@ -31,8 +31,7 @@
     justify-content: space-between;
     gap: 10px;
     width: 82%;
-    font-family: 'Druk Cyr';
-    font-size: 25px;   
+    font-family: 'Bebas Neue', sans-serif;    font-size: 25px;   
 }
 .nav-part2-main1{
     display: flex;
@@ -76,8 +75,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 50px;
-    font-family: 'Druk Cyr';
-}
+    font-family: 'Bebas Neue', sans-serif;}
 .opened-nav-head{
     display: flex;
     flex-direction: row;
@@ -89,7 +87,8 @@
 }
 .opened-nav-head span{
     font-size: 56px;
-    font-family: "timmons ny 2.0";
+    font-family: 'Six Caps', sans-serif;
+    font-weight: 600;
 }
 .opened-nav-close{
     display: flex;
@@ -109,8 +108,7 @@
 .highlight{
     width: 70%;
     color: #FFF;
-    font-family: 'Druk Cyr';
-    font-size: 241.3px;
+    font-family: 'Bebas Neue', sans-serif;    font-size: 241.3px;
     font-style: normal;
     font-weight: 700;
     line-height: 201.429px;
@@ -132,8 +130,7 @@
 
 .menu-card-heading{
     color: #FFF;
-font-family: 'Druk Cyr';
-font-size: 24px;
+    font-family: 'Bebas Neue', sans-serif;font-size: 24px;
 font-style: normal;
 font-weight: 700;
 }
@@ -142,8 +139,7 @@ font-weight: 700;
     display: flex;
     flex-direction: column;
     color: #FFF;
-    font-family: 'Druk Cyr';
-    font-size: 47.609px;
+    font-family: 'Bebas Neue', sans-serif;    font-size: 47.609px;
     font-style: normal;
     line-height: 50px;
 }
