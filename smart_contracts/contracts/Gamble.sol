@@ -4,7 +4,16 @@ pragma solidity ^0.8.0;
 contract Gamble {
     address private immutable owner;
     uint256 public immutable entryFee;
-    enum TeamResult { NotSettled, Win, Loss }
+    // enum TeamResult { NotSettled, Win, Loss }
+    bool hasMatchCompleted;
+    function setMatchStatus( address _user) private {
+        if(users[_user].result==1 || users[_user].result==2){
+            hasMatchCompleted=true;
+        }
+        else{
+            hasMatchCompleted=false;
+        }
+    }
     function setResultStatusWon(address user ) public{
             users[user].result=1;
     }
@@ -46,6 +55,7 @@ contract Gamble {
     function enter() public payable {
         require(msg.value >= (entryFee / 10**18), "Insufficient entry fee");
         require(!users[msg.sender].hasEntered, "You have already entered");
+        require(!hasMatchCompleted,"You can't bet now match already complted");
         gamblersToAmountBet[msg.sender] = msg.value;
         gamblers.push(msg.sender);
         users[msg.sender].hasEntered = true;
@@ -63,7 +73,7 @@ contract Gamble {
             require(users[_user].result == 2, "Result already decided");
         // users[_user].result = _result;
         if (users[_user].result == 1) {
-            uint256 winnings = entryFee * 2;
+            uint256 winnings = entryFee + (gamblersToAmountBet[_user]/gamblers.length);
             payable(_user).transfer(winnings);
             emit UserWon(_user, winnings);
         } else if (users[_user].result == 0) {
@@ -72,6 +82,8 @@ contract Gamble {
         }
     }
     function withdraw() public onlyOwner {
+
+        require(hasMatchCompleted,"wait for match completion");
         payable(owner).transfer(address(this).balance);
     }
 
