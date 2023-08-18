@@ -1,4 +1,4 @@
-export const address = "0x27169fdcFd8a957dabE77B1746Ff03C1277e817b";
+export const address = "0x119073BD77860dFDBf4536733A5F793a2FFD927C";
 export const abi = [
   {
     inputs: [{ internalType: "uint256", name: "_entryFee", type: "uint256" }],
