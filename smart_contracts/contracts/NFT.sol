@@ -13,10 +13,10 @@ contract NFT is ERC721URIStorage,Ownable{
         _tokenIds=0;
     }
 
-    function mintNFT (address recipient,string memory tokenURI)public onlyOwner()returns (uint256){
+    function mintNFT (string memory tokenURI)public onlyOwner()returns (uint256){
         _tokenIds+=1;
         uint256 newItemId=_tokenIds;
-        _mint(recipient, newItemId);
+        _mint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
         return newItemId;
     }
