@@ -34,6 +34,7 @@ contract Gamble {
         _;
     }
 
+<<<<<<< HEAD
     // function setMatchStatus(address _user) private {
     //     if (users[_user].result == 1 || users[_user].result == 2) {
     //         matchStatus = MatchStatus.Completed;
@@ -41,6 +42,15 @@ contract Gamble {
     //         matchStatus = MatchStatus.Started;
     //     }
     // }
+=======
+    function setMatchStatus(address _user) private {
+        if (users[_user].result == 1 || users[_user].result == 0) {
+            matchStatus = MatchStatus.Completed;
+        } else {
+            matchStatus = MatchStatus.Started;
+        }
+    }
+>>>>>>> bbb44e9 (NFT integrated)
 
     // function setResultStatusWon(address user ) public{
     //         users[user].result=1;
