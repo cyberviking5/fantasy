@@ -1,3 +1,8 @@
+/* .rate{
+    background-image: url(../../assets/rating.jpg);
+    background-size: auto 1000px;
+    background-repeat: none;
+} */
 .cards{
     padding: 10px 50px;
     display: flex;

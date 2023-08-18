@@ -4,7 +4,7 @@ import './Rating.css'
 const Rating = () => {
 
     console.log(ratings)
-  return (<>
+  return (<div className='rate'>
     <div className='cards'>
             {ratings.map((rating,index)=>(
                 <div className='card' key={index}>
@@ -15,7 +15,7 @@ const Rating = () => {
             ))}      
       
     </div>
-    </>
+    </div>
   )
 }
 

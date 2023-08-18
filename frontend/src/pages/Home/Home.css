@@ -141,6 +141,7 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
+    padding-bottom: 30px;
 }
 #second-tab {
     color: #fff;
@@ -187,6 +188,10 @@
     width: 100%;
     display:flex;
     flex-direction: column;
+    background-image: url(../../assets/rating.jpg);
+    background-size: auto 1000px;
+    background-repeat: none;
+
 }
 .third-head{
     display: flex;

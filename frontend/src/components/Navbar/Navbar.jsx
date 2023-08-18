@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 import Scroller from '../Scroller/Scroller';
 import logo from '../../assets/logo.png';
 
@@ -35,7 +36,7 @@ const Navbar = () => {
       <div className='opened-nav linear duration-500 ' >
         
       <div className='opened-nav-top'>
-        <div className='opened-nav-head'><span>METABET</span><img src={logo} alt="" /></div>
+        <Link to='/' className='opened-nav-head'><span>METABET</span><img src={logo} alt="" /></Link>
         <div className='opened-nav-close'>
           <div>CLOSE</div>
           <span><AiOutlineClose size={50} onClick={handleNav}/></span>
@@ -51,10 +52,13 @@ const Navbar = () => {
         <div className='menu-card'>
           <div className='menu-card-heading'>MENU</div>
           <div className='menu-card-list'>
-          <a href="">ABOUT US</a>
-          <a href="">OUR TEAM</a>
-          <a href="">GAMES</a>
-          <a href="">TECH STACK</a>
+          
+          <Link to='/'>ABOUT US</Link>
+          <Link to='/team'>OUR TEAM</Link>
+          <Link to='/games'>GAMES</Link>
+          <Link to='/'>TECH STACK</Link>
+      
+         
           </div>
         </div>
       </div>
@@ -70,14 +74,14 @@ const Navbar = () => {
         :
 
         <div className='navbar linear duration-500'>
-        <div className='nav-part1'>
+        <Link to='/' className='nav-part1'>
             <span className='logoHeading'>METABET</span>
             <img src={logo} alt="" />
-        </div>
+        </Link>
         <div className='nav-part2'>
           <div className='nav-part2-main1' >
-          <div className='nav-games'>GAMES</div>
-          <div className='nav-team'>OUR TEAM</div>
+          <Link to="/games" className='nav-games' >GAMES</Link>
+          <Link to='/team' className='nav-team'>OUR TEAM</Link>
           </div>
           <div className='nav-part2-main2'>
           <div className='nav-connect cursor-pointer' onClick={connect}>{con}</div>
