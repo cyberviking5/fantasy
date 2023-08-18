@@ -4,6 +4,8 @@ import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
 import './Navbar.css';
 import Scroller from '../Scroller/Scroller';
 import logo from '../../assets/logo.png';
+import { address,abi } from '../../contracts_abi_address/SimpleFlashLoan';
+import {ethers,providers} from 'ethers'
 
 const Navbar = () => {
 
@@ -16,7 +18,34 @@ const Navbar = () => {
     }
     }
     catch(e){console.log(e)}
-}
+  }
+
+  async function enter()
+  {
+    try{
+    if(window.ethereum!=="undefined"){
+      const provider=new ethers.providers.Web3Provider(window.ethereum)
+      await provider.send('eth_requestAccounts', []);
+      const signer=provider.getSigner()
+      const contract=new ethers.Contract(address,abi,signer)
+      const transactionResponse=await contract.fn_RequestFlashLoan("0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f",10)
+      await listenForTransactionMined(transactionResponse,provider)
+      console.log("Done")
+    }
+  }catch(e){console.log(e)}
+  }
+  function listenForTransactionMined(transactionResponse,provider){
+    try{
+    console.log(`Mining ${transactionResponse.hash}...`)
+    //listen for this transaction to be finished
+    return new Promise((resolve,reject)=>{
+        provider.once(transactionResponse.hash,(transactionReciept)=>{
+            console.log(`Completed with ${transactionReciept.confirmations}`)
+            resolve()
+        })
+    })
+}catch(e){console.log(e)}
+  }
 
   const [nav,setNav] = useState(false)
   const [con,setcon]=useState("CONNECT")
