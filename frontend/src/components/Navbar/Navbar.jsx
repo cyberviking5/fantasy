@@ -7,6 +7,13 @@ import logo from '../../assets/logo.png';
 
 const Navbar = () => {
 
+  async function connect(){
+    if(window.ethereum!=="undefined")
+    {
+        await window.ethereum.request({method:"eth_requestAccounts"})
+    }
+}
+
   const [nav,setNav] = useState(false)
 
   const handleNav = () => {
@@ -68,7 +75,7 @@ const Navbar = () => {
           <div className='nav-team'>OUR TEAM</div>
           </div>
           <div className='nav-part2-main2'>
-          <div className='nav-connect'>CONNECT</div>
+          <div className='nav-connect' onClick={connect}>CONNECT</div>
           <div className='nav-menu' onClick={handleNav}><div>MENU
             </div>
             <div className='menu-icon-open'>
