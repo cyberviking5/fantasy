@@ -5,7 +5,7 @@ export const abi=[
         {
           internalType: "address",
           name: "_addressProvider",
-          type: "address"
+          type: "address" 
         }
       ],
       stateMutability: "nonpayable",
