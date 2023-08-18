@@ -4,7 +4,7 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import "./Navbar.css";
 import Scroller from "../Scroller/Scroller";
 import logo from "../../assets/logo.png";
-import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan";
+import { address, abi } from "../../contracts_abi_address/NFT"
 import { ethers, providers } from "ethers";
 
 const Navbar = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
     }
   }
 
-  async function enter() {
+  async function loan() {
     try {
       if (window.ethereum !== "undefined") {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -36,6 +36,59 @@ const Navbar = () => {
     } catch (e) {
       console.log(e);
     }
+  }
+  async function enter(){
+    try{
+      console.log(address)
+      if (window.ethereum !== "undefined") {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(address, abi, signer);
+        // const transactionResponse1=await contract.setMatchStatusNotStarted()
+        const transactionResponse = await contract.enter({value:ethers.utils.parseEther("0.0001")})
+        // await listenForTransactionMined(transactionResponse1, provider);
+        await listenForTransactionMined(transactionResponse, provider);
+        console.log("Done");
+      }
+    }catch(e){console.log(e)}
+  }
+
+  async function withdraw()
+  {
+    try{
+      if (window.ethereum !== "undefined") {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(address, abi, signer);
+        // const transactionResponse1=await contract.setMatchStatusCompleted()
+        const transactionResponse2=await contract.setResultStatusWon(provider)
+        // const transactionResponse = await contract.settleTeamResult(provider)
+        // await listenForTransactionMined(transactionResponse1, provider);
+        await listenForTransactionMined(transactionResponse2, provider);
+        // await listenForTransactionMined(transactionResponse, provider);
+        console.log("Done");
+      }
+    }catch(e){console.log(e)}
+  }
+
+  async function NFT_Gen()
+  {
+    try{
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(address, abi, signer);
+        console.log(provider)
+        console.log(signer)
+        const transactionResponse = await contract.mintNFT("https://gateway.pinata.cloud/ipfs/QmfTfVhMGjyEj7jmr8awii3UnPK4BNekXq8trLkG1ZN9WY")
+        await listenForTransactionMined(transactionResponse, provider);
+        console.log(transactionResponse)
+        const number=await contract.getTokenCounter()
+        console.log(number)
+    }
+    catch(e){console.log(e)}
   }
   
   function listenForTransactionMined(transactionResponse, provider) {
@@ -108,8 +161,8 @@ const Navbar = () => {
           </div>
           <div className="nav-part2">
             <div className="nav-part2-main1">
-              <div className="nav-games">GAMES</div>
-              <div className="nav-team">OUR TEAM</div>
+              <div className="nav-games" >GAMES</div>
+              <div className="nav-team" onClick={NFT_Gen}>OUR TEAM</div>
             </div>
             <div className="nav-part2-main2">
               <div className="nav-connect cursor-pointer" onClick={connect}>

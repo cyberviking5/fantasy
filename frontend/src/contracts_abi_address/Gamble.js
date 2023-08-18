@@ -1,9 +1,15 @@
-export const address = "0x119073BD77860dFDBf4536733A5F793a2FFD927C";
-export const abi = [
+export const address = "0xfD3Dc2C2668336907369f5DB800ec286de8fC08a";
+export const abi =[
   {
-    inputs: [{ internalType: "uint256", name: "_entryFee", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_entryFee",
+        type: "uint256"
+      }
+    ],
     stateMutability: "nonpayable",
-    type: "constructor",
+    type: "constructor"
   },
   {
     anonymous: false,
@@ -12,17 +18,17 @@ export const abi = [
         indexed: false,
         internalType: "address",
         name: "user",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "UserEntered",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -31,17 +37,17 @@ export const abi = [
         indexed: false,
         internalType: "address",
         name: "user",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "UserLost",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -50,154 +56,268 @@ export const abi = [
         indexed: false,
         internalType: "address",
         name: "user",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "UserWon",
-    type: "event",
+    type: "event"
   },
   {
     inputs: [],
     name: "enter",
     outputs: [],
     stateMutability: "payable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "entryFee",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     name: "gamblers",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
     name: "gamblersToAmountBet",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "getBalance",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "getEntryFee",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "getMatchStatus",
     outputs: [
-      { internalType: "enum Gamble.MatchStatus", name: "", type: "uint8" },
+      {
+        internalType: "enum Gamble.MatchStatus",
+        name: "",
+        type: "uint8"
+      }
     ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "getOwner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address"
+      }
+    ],
     name: "getUserEntryStatus",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address"
+      }
+    ],
     name: "getUserResult",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "setMatchStatusCompleted",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "setMatchStatusNotStarted",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "setMatchStatusStarted",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address"
+      }
+    ],
     name: "setResultStatusLive",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address"
+      }
+    ],
     name: "setResultStatusLost",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address"
+      }
+    ],
     name: "setResultStatusWon",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address"
+      }
+    ],
     name: "settleTeamResult",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
     name: "users",
     outputs: [
-      { internalType: "bool", name: "hasEntered", type: "bool" },
-      { internalType: "uint256", name: "result", type: "uint256" },
+      {
+        internalType: "bool",
+        name: "hasEntered",
+        type: "bool"
+      },
+      {
+        internalType: "uint256",
+        name: "result",
+        type: "uint256"
+      }
     ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "withdraw",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
+    type: "function"
+  }
 ];
