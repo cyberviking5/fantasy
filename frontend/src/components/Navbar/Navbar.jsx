@@ -80,7 +80,7 @@ const Navbar = () => {
           <div className='nav-team'>OUR TEAM</div>
           </div>
           <div className='nav-part2-main2'>
-          <div className='nav-connect' onClick={connect}>{con}</div>
+          <div className='nav-connect cursor-pointer' onClick={connect}>{con}</div>
           <div className='nav-menu' onClick={handleNav}><div>MENU
             </div>
             <div className='menu-icon-open'>
