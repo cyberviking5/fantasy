@@ -11,6 +11,8 @@ import tennisss from '../../assets/tennisss.jpg'
 import {gsap} from "gsap";
 import CustomEase from 'gsap/CustomEase'
 import Rating from '../../components/Rating/Rating';
+import Tech from '../../components/Tech/Tech';
+import Footer from '../../components/Footer/Footer';
 
 
 const Home = () => {
@@ -135,14 +137,16 @@ const Home = () => {
 
 
       <div className="panel" id="fourth">
-        <div>
-            <h1>TECH STACK</h1>
-            <p>TO MAKE THIS PROJECT POSSIBLE WE HAVE USED A NUMBER OF TECHNOLOGIES SO THAT WE CAN GIVE THE BEST PROJECT POSSIBLE .</p>
+        <div className='fourth-head'>
+            <h1 className='fourth-heading'>TECH <span>STACK</span></h1>
+            <p className='fourth-head-p'>TO MAKE THIS PROJECT POSSIBLE WE HAVE USED A NUMBER OF TECHNOLOGIES SO THAT WE CAN GIVE THE BEST PROJECT POSSIBLE .</p>
         </div>
         <div>
-
+          <Tech/>
         </div>
       </div>
+
+      <Footer/>
     </>
   );
 }

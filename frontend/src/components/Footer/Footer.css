@@ -1,0 +1,66 @@
+.footer{
+    margin-top: 50px;
+    background-color: white;
+    overflow: hidden;
+    min-height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+    justify-content: center;
+    /* position:relative; */
+    gap: 10%;
+}
+.foot-top{
+    padding-top:100px;
+    width: 100%;
+    /* height: 20vh; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.ft-left{
+    display: flex;
+    flex-direction: row;
+    gap:25%;
+    width: 30%;
+    padding-left: 95px;
+}
+.ft-right{
+    padding-right:130px;
+}
+
+.foot-bot{
+    /* height: 40vh; */
+    align-self: center;
+}
+/* .foot-bot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.foot-bot p{
+    overflow:hidden;
+    bottom: 0;
+    width: 70%;
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 360px;
+    margin-left:-10px;
+    font-weight: 700;
+    bottom:0;
+}
+.foot-logo{
+    align-self: center;
+    justify-self: start;
+    height: 300px;
+    width: 300px;
+    background-color: black;
+    border-radius: 50%;
+} */
+
+
+
+

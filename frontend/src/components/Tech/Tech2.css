@@ -1,0 +1,44 @@
+#scrollerTECH2{
+    min-height: 10vh;
+    margin: 40px 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    background-color: white;
+    transform: rotate(-2deg);
+}
+#scrollerTECH2::-webkit-scrollbar{
+    display:none;
+}
+#scroller-inTECH2{
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+#scrollerTECH2 h4{
+    display: inline-block;
+    font-size: 100px;
+    font-family: 'Six Caps', sans-serif;
+    font-weight: 600;
+    margin-right:50px;
+    transition: all linear .1s;
+    color: black;
+    
+}
+
+
+
+@keyframes scroll {
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
