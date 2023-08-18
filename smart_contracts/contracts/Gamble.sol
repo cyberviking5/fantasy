@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 contract Gamble {
     address private immutable owner;
     uint256 public immutable entryFee;
-
     enum MatchStatus {
         NotStarted,
         Started,
