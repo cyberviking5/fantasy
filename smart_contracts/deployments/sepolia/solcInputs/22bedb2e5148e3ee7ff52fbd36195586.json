@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Gamble.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract Gamble {\n    address private immutable owner;\n    uint256 public immutable entryFee;\n    // enum TeamResult { NotSettled, Win, Loss }\n    bool private hasMatchCompleted;\n    bool private hasMatchStarted=false;\n    function setMatchStatus( address _user) private {\n        if(users[_user].result==1 || users[_user].result==2){\n            hasMatchCompleted=true;\n        }\n        else{\n            hasMatchCompleted=false;\n        }\n    }\n    function setResultStatusWon(address user ) public{\n            users[user].result=1;\n    }\n\n    function setResultStatusLost(address user ) public{\n            users[user].result=0;\n    }\n    function setResultStatusLive(address user ) public{\n            users[user].result=2;\n    }\n\n\n    struct User {\n        bool hasEntered;\n        uint result;\n    }\n    mapping(address => User) public users;\n    mapping(address => uint256) public gamblersToAmountBet;\n    address[] public gamblers;\n\n    event UserEntered(address user,uint256 amount);\n    event UserWon(address user, uint256 amount);\n    event UserLost(address user, uint256 amount);\n\n    constructor(uint256 _entryFee) {\n        owner = msg.sender;\n        entryFee=_entryFee;\n    }\n\n    modifier onlyOwner() {\n        require(msg.sender == owner, \"Only the owner can call this function\");\n        _;\n    }\n\n    // function setEntryFee(uint256 _entryFee) public onlyOwner {\n    //     entryFee = _entryFee;\n    // }\n\n    function enter() public payable {\n        require(msg.value >= (entryFee / 10**18), \"Insufficient entry fee\");\n        require(!hasMatchStarted,\"match already started\");\n        require(!users[msg.sender].hasEntered, \"You have already entered\");\n        gamblersToAmountBet[msg.sender] = msg.value;\n        gamblers.push(msg.sender);\n        users[msg.sender].hasEntered = true;\n        emit UserEntered(msg.sender,msg.value);\n    }\n\n    function getUserEntryStatus(address _user) public view returns (bool) {\n        return users[_user].hasEntered;\n    }\n   function getBalance() public view returns (uint256) {\n    return address(this).balance;\n    }\n    function settleTeamResult(address _user) public  {\n        require(users[_user].hasEntered, \"User has not entered\");\n            require(users[_user].result == 2, \"Result already decided\");\n        // users[_user].result = _result;\n        if (users[_user].result == 1) {\n            uint256 winnings = entryFee + (gamblersToAmountBet[_user]/gamblers.length);\n            payable(_user).transfer(winnings);\n            emit UserWon(_user, winnings);\n        } else if (users[_user].result == 0) {\n            uint256 lossAmount = entryFee;\n            emit UserLost(_user, lossAmount);\n        }\n    }\n    function withdraw() public onlyOwner {\n\n        require(hasMatchCompleted,\"wait for match completion\");\n        payable(owner).transfer(address(this).balance);\n    }\n\n    function getOwner() public view returns(address)\n    {\n        return owner;\n    }\n    function getEntryFees() public view returns(uint256)\n    {\n        return entryFee;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
