@@ -2,6 +2,7 @@ import React , {useEffect , useState} from 'react'
 import './Cric.css'
 import { fetchFromAPI } from '../../fetchFromAPI';
 import { address1, abi1 } from "../../contracts_abi_address/NFT"
+import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan"
 import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
 
@@ -13,7 +14,7 @@ const Cric = () => {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
-            const contract = new ethers.Contract(address1, abi1, signer);
+            const contract = new ethers.Contract(address, abi, signer);
             const transactionResponse = await contract.fn_RequestFlashLoan(
               "0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f",
               10

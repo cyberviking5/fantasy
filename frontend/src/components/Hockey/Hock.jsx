@@ -1,8 +1,93 @@
 import React,{useEffect , useState} from 'react'
 import './Hock.css'
 import { fetchFromAPI } from '../../fetchFromAPI';
+import { address1, abi1 } from "../../contracts_abi_address/NFT"
+import {address4,abi4} from '../../contracts_abi_address/Gamble2'
+import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan"
 
 const Hock = () => {
+    async function loan() {
+        try {
+          if (window.ethereum !== "undefined") {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(address, abi, signer);
+            const transactionResponse = await contract.fn_RequestFlashLoan(
+              "0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f",
+              10
+            );
+            await listenForTransactionMined(transactionResponse, provider);
+            console.log("Done");
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      async function enter(){
+        try{
+          console.log(address1)
+          if (window.ethereum !== "undefined") {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(address4, abi4, signer);
+            // const transactionResponse1=await contract.setMatchStatusNotStarted()
+            const transactionResponse = await contract.enter({value:ethers.utils.parseEther("0.0001")})
+            // await listenForTransactionMined(transactionResponse1, provider);
+            await listenForTransactionMined(transactionResponse, provider);
+            console.log("Done");
+          }
+        }catch(e){console.log(e)}
+      }
+    
+      async function withdraw()
+      {
+        try{
+          if (window.ethereum !== "undefined") {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(address4, abi4, signer);
+            const transactionResponse1=await contract.settleTeamResultWon()
+            await listenForTransactionMined(transactionResponse1, provider);
+            console.log("Done");
+          }
+        }catch(e){console.log(e)}
+      }
+    
+      async function NFT_Gen()
+      {
+        try{
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(address1, abi1, signer);
+            console.log(provider)
+            console.log(signer)
+            const transactionResponse = await contract.mintNFT("https://gateway.pinata.cloud/ipfs/QmfTfVhMGjyEj7jmr8awii3UnPK4BNekXq8trLkG1ZN9WY")
+            await listenForTransactionMined(transactionResponse, provider);
+            console.log(transactionResponse)
+            const number=await contract.getTokenCounter()
+            console.log(number)
+        }
+        catch(e){console.log(e)}
+      }
+      
+      function listenForTransactionMined(transactionResponse, provider) {
+        try {
+          console.log(`Mining ${transactionResponse.hash}...`);
+          //listen for this transaction to be finished
+          return new Promise((resolve, reject) => {
+            provider.once(transactionResponse.hash, (transactionReciept) => {
+              console.log(`Completed with ${transactionReciept.confirmations}`);
+              resolve();
+            });
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      }
 
 
     const [t1,setT1] = useState('');
