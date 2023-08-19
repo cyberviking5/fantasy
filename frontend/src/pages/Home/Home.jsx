@@ -20,6 +20,8 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 
+  
+
   document.querySelectorAll(".elem").forEach(function (elem) {
     var rotate = 0;
     var diffrot = 0;
@@ -58,8 +60,8 @@ const Home = () => {
                 WAY WITH <span>ME</span> US
               </div>
               <div className="hero-buttons">
-                <button>Try Now</button>
-                <button>Try Now</button>
+                <button><a href='#second'>GAMES</a></button>
+                <button><a href='#fourth'>TECH STACK</a></button>
               </div>
             </div>
             <div className="main-lastline">

@@ -7,8 +7,13 @@ import logo from "../../assets/logo.png";
 import { address, abi } from "../../contracts_abi_address/NFT"
 import { ethers, providers } from "ethers";
 import {Link} from 'react-router-dom'
+import NavMod from './NavMod'
 
 const Navbar = () => {
+
+
+  const cur = window.location.pathname;
+
   async function connect() {
     try {
       if (window.ethereum !== "undefined") {
@@ -30,53 +35,69 @@ const Navbar = () => {
   return (
     <>
       {nav ? (
-        <div className="opened-nav linear duration-500 ">
-          <div className="opened-nav-top">
-            <Link to='/' className="opened-nav-head">
-              <span>METABET</span>
-              <img src={logo} alt="" />
-            </Link>
-            <div className="opened-nav-close">
-              <div>CLOSE</div>
-              <span>
-                <AiOutlineClose size={50} onClick={handleNav} />
-              </span>
-            </div>
-          </div>
+        // <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
+        <NavMod cur={cur} handleNav={()=>{setNav()}}></NavMod>
+      //   <div className="opened-nav linear duration-500 ">
+      //     <div className="opened-nav-top">
+      //       <Link to="/" className="opened-nav-head">
+      //         <span>METABET</span>
+      //         <img src={logo} alt="" />
+      //       </Link>
+      //       <div className="opened-nav-close">
+      //         <div>CLOSE</div>
+      //         <span>
+      //           <AiOutlineClose size={50} onClick={handleNav} />
+      //         </span>
+      //       </div>
+      //     </div>
 
-          <Scroller />
+      //     <Scroller />
 
-          <div className="opened-nav-main">
-            <div className="highlight">
-              BET WITH <span>BLOCKCHAIN</span>
-            </div>
-            <div className="menu-card">
-              <div className="menu-card-heading">MENU</div>
-              <div className="menu-card-list">
-                <Link to='/'>ABOUT US</Link>
-                <Link to='/team'>OUR TEAM</Link>
-                <Link to='/games'>GAMES</Link>
-                <Link to='/'>TECH STACK</Link>
-              </div>
-            </div>
-          </div>
+      //     <div className="opened-nav-main">
+      //       <div className="highlight">
+      //         BET WITH <span>BLOCKCHAIN</span>
+      //       </div>
+      //       <div className="menu-card">
+      //         <div className="menu-card-heading">MENU</div>
 
-          <div className="opened-nav-bt">
-            <div>POWERED BY OVERENGINEERED</div>
-            <div>METABOYS</div>
-            <div>METABET © 2023 </div>
-          </div>
-        </div>
+      //         {cur == "/" ? (
+      //           <div className="menu-card-list">
+      //             <a href="#first">ABOUT US</a>
+      //             <Link to="/team">OUR TEAM</Link>
+      //             <Link to="/games">GAMES</Link>
+      //             <a href="#fourth">TECH STACK</a>
+      //           </div>
+      //         ) : (
+      //           <div className="menu-card-list">
+      //             <Link to='/'>ABOUT US</Link>
+      //             <Link to="/team">OUR TEAM</Link>
+      //             <Link to="/games">GAMES</Link>
+      //             <Link to='/'>ABOUT US</Link>
+      //           </div>
+      //         )}
+      //       </div>
+      //     </div>
+
+      //     <div className="opened-nav-bt">
+      //       <div>POWERED BY OVERENGINEERED</div>
+      //       <div>METABOYS</div>
+      //       <div>METABET © 2023 </div>
+      //     </div>
+      //   </div>
       ) : (
         <div className="navbar linear duration-500">
-          <Link to='/' className="nav-part1">
+          <Link to="/" className="nav-part1">
             <span className="logoHeading">METABET</span>
             <img src={logo} alt="" />
           </Link>
           <div className="nav-part2">
             <div className="nav-part2-main1">
-              <Link to='/games' className="nav-games" >GAMES</Link>
-              <Link to='/team' className="nav-team">OUR TEAM</Link>
+              <Link to="/games" className="nav-games">
+                GAMES
+              </Link>
+              <Link to="/team" className="nav-team">
+                OUR TEAM
+              </Link>
             </div>
             <div className="nav-part2-main2">
               <div className="nav-connect cursor-pointer" onClick={connect}>

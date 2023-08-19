@@ -13,9 +13,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/games" element={<Games />} />
         <Route path="/team" element={<Team />} />
-        <Route path='/cricket' element={<Cric/>}/>
-        <Route path='/hockey' element={<Hock/>}/>
-        <Route path='/football' element={<Foot/>}/>
         </Routes>
     </BrowserRouter>
   );

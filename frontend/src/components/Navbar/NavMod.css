@@ -1,70 +1,7 @@
-.navbar{
-    background: transparent;
-    position:sticky;
-    height: 10vh;
-    padding: 10px 50px;
-    display :flex;
-    flex-direction: row;
-    color:white;
-    width: 100%;
-    font-family: 'Six Caps', sans-serif;
-    font-weight: 600;
-}
-.nav-part1{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    gap: 5px;
-    width: 18%;
-}
-.nav-part1 img{
-    height: 48px;
-}
-.logoHeading{
-    font-size: 56px;
-   
-}
-.nav-part2{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    width: 82%;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 25px;   
-}
-.nav-part2-main1{
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 70px;
-    text-decoration: underline;
-    text-underline-offset: 7px;
-}
-.nav-part2-main2{
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 70px;
-
-}
-.nav-menu{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:10px;
-}
-.menu-icon-open{
-    align-items: center;
-}
-
-
-
-/* .opened-nav{
+.opened-nav{
     position:relative;
     min-height: 100vh;
+    /* padding: 10px 50px; */
     width: 100%;
     color: white; 
     background-color: black;
@@ -158,4 +95,4 @@ font-weight: 700;
     font-style: normal;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-} */
+}
