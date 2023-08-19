@@ -1,12 +1,17 @@
 import React from 'react'
+import bijuli from '../../../assets/bijuli.mp4'
+import './Ig.css'
+import {Link} from 'react-router-dom'
 
 const Ig = () => {
   return (
     <div className='ig'>
-      <button className='igvid'>METABET</button>
-      <div>
-        <h1></h1>
-        <p></p>
+      <div className='igvid'><video autoPlay loop muted src={bijuli}></video></div>
+      <div className='igg'><Link to='/'>  
+      
+      <button className='metabutti'>METABET</button></Link>
+      
+        <p className='igp'>SORRY NO LINKS ARE AVAILABLE AS OF NOW.</p>
       </div>
     </div>
   )

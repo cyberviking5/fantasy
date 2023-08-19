@@ -64,6 +64,9 @@
     font-style: normal;
     font-weight: 900;
 }
+.panel{
+    background-color: black;
+}
 
 #first{
     width: 100%;

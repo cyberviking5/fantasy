@@ -16,11 +16,12 @@ import Footer from '../../components/Footer/Footer';
 import {useState , useEffect} from 'react'
 import { fetchFromAPI } from '../../fetchFromAPI';
 import { Link } from 'react-router-dom';
+import Lenis from '@studio-freight/lenis'
+
 
 
 const Home = () => {
 
-  
 
   document.querySelectorAll(".elem").forEach(function (elem) {
     var rotate = 0;
@@ -47,6 +48,16 @@ const Home = () => {
       });
     });
   });
+  const lenis = new Lenis()
+  lenis.on('scroll', (e) => {
+  console.log(e)
+})
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
   return (
     <>
       <div className="home  h-[100vh]">
