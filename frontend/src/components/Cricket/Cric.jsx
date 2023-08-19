@@ -7,6 +7,7 @@ import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
 
 const Cric = () => {
+  const [num,setnum] = useState('');
 
     async function loan() {
         try {
@@ -35,7 +36,7 @@ const Cric = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(address2, abi2, signer);
             // const transactionResponse1=await contract.setMatchStatusNotStarted()
-            const transactionResponse = await contract.enter({value:ethers.utils.parseEther("0.0001")})
+            const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
@@ -90,7 +91,6 @@ const Cric = () => {
           console.log(e);
         }
       }
-
     const [t1,setT1] = useState('');
     const [t2,setT2] = useState('');
     const [r1,setR1] = useState('0');
@@ -168,7 +168,7 @@ const Cric = () => {
         </div>
         <div className='g3'>
         <div className='g-butt'><p>Team1 will win ?</p><button onClick={enter}>Yes</button><button onClick={withdraw}>No</button></div>
-            <div className='g-sub'><button onClick={NFT_Gen}>Submit</button> <input type="number" placeholder='Enter the amount' /></div>
+            <div className='g-sub'><button onClick={NFT_Gen}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}} /></div>
         </div>
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>

@@ -4,6 +4,7 @@ import { fetchFromAPI } from '../../fetchFromAPI';
 import { address1, abi1 } from "../../contracts_abi_address/NFT"
 import {address4,abi4} from '../../contracts_abi_address/Gamble2'
 import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan"
+import { ethers, providers } from "ethers";
 
 const Hock = () => {
     async function loan() {
@@ -33,7 +34,7 @@ const Hock = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(address4, abi4, signer);
             // const transactionResponse1=await contract.setMatchStatusNotStarted()
-            const transactionResponse = await contract.enter({value:ethers.utils.parseEther("0.0001")})
+            const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
@@ -91,6 +92,7 @@ const Hock = () => {
 
 
     const [t1,setT1] = useState('');
+    const [num,setnum] = useState('');
     const [t2,setT2] = useState('');
     const [g1,setG1] = useState('');
     const [g2,setG2] = useState('');
@@ -161,7 +163,7 @@ const Hock = () => {
         </div>
         <div className='g3'>
         <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div>
-            <div className='g-sub'><button>Submit</button> <input type="number" placeholder='Enter the amount' /></div>
+            <div className='g-sub'><button  onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/></div>
         </div>
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>
