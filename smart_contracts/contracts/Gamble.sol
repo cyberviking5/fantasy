@@ -34,7 +34,6 @@ contract Gamble {
         _;
     }
 
-<<<<<<< HEAD
     // function setMatchStatus(address _user) private {
     //     if (users[_user].result == 1 || users[_user].result == 2) {
     //         matchStatus = MatchStatus.Completed;
@@ -42,15 +41,6 @@ contract Gamble {
     //         matchStatus = MatchStatus.Started;
     //     }
     // }
-=======
-    function setMatchStatus(address _user) private {
-        if (users[_user].result == 1 || users[_user].result == 0) {
-            matchStatus = MatchStatus.Completed;
-        } else {
-            matchStatus = MatchStatus.Started;
-        }
-    }
->>>>>>> bbb44e9 (NFT integrated)
 
     // function setResultStatusWon(address user ) public{
     //         users[user].result=1;
@@ -86,19 +76,21 @@ contract Gamble {
     //     matchStatus = MatchStatus.Completed;
     // }
 
-    function settleTeamResultWon(address user) public {
-                 require(users[user].hasEntered, "User has not entered");
+    function settleTeamResultWon() public {
+                 require(users[msg.sender].hasEntered, "User has not entered");
                  uint256 winnings = entryFee +
-                 (gamblersToAmountBet[user] / gamblers.length);
-                 payable(user).transfer(winnings);
-                 emit UserWon(user, winnings);
+                 (gamblersToAmountBet[msg.sender] / gamblers.length);
+                 payable(msg.sender).transfer(winnings);
+                 users[msg.sender].hasEntered=false;
+                 emit UserWon(msg.sender, winnings);
        
     }
 
-    function settleTeamResultLoss(address user) public {
-             require(users[user].hasEntered, "User has not entered");
+    function settleTeamResultLoss() public {
+             require(users[msg.sender].hasEntered, "User has not entered");
              uint256 lossAmount = entryFee;
-             emit UserLost(user, lossAmount);
+             users[msg.sender].hasEntered=false;
+             emit UserLost(msg.sender, lossAmount);
     }
 
 
@@ -129,4 +121,6 @@ contract Gamble {
     function getBalance() public view returns (uint256) {
         return address(this).balance;
     }
+
+    receive() external payable {}
 }
