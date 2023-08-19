@@ -7,6 +7,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
     gap:3%;
 }
 .cric-head{
@@ -86,11 +88,21 @@ line-height: normal;
     gap: 20px;
 }
 .g-butt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
     height: 40px;
-    width: 100px;
+    width: 50%;
     font-size: 25px;
     text-align: center;
+    background-color: transparent;
     color: white;
+    border-radius: 5px;
+}
+.g-butt button{
+    width: 100px;
     background-color: green;
     border-radius: 5px;
 }

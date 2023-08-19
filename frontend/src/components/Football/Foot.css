@@ -10,6 +10,8 @@
     justify-content: center;
     gap:3%;
     color: white;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
 }
 .gameCont-head{
     color: #ffffff;
@@ -49,17 +51,24 @@ line-height: normal;
     /* padding: 0 30px; */
     display: flex;
     flex-direction: row;
-    gap:25%;
+    gap:30%;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    justify-content: space-around;
-    font-size: 55px;
+    justify-content: center;
+    font-size: 30px;
 }
-.team-name p{
+.team-name div{
+    width: 30%;
+    padding-right: 40px;
     white-space: nowrap;
+    /* overflow: hidden; */
     font-family: 'Poppins', sans-serif;
     font-size: 55px;
     /* width:1px; */
+}
+.f-score{
+    font-size:30px;
+    white-space: nowrap;
 }
 .time{
     font-size: 15px;
@@ -72,11 +81,21 @@ line-height: normal;
     gap: 20px;
 }
 .g-butt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
     height: 40px;
-    width: 100px;
+    width: 50%;
     font-size: 25px;
     text-align: center;
+    background-color: transparent;
     color: white;
+    border-radius: 5px;
+}
+.g-butt button{
+    width: 100px;
     background-color: green;
     border-radius: 5px;
 }

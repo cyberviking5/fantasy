@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import './Games.css'
 import Scroller from '../../components/Scroller/Scroller'
@@ -6,7 +6,11 @@ import Cric from '../../components/Cricket/Cric'
 import Hock from '../../components/Hockey/Hock'
 import Foot from '../../components/Football/Foot'
 import Footer from '../../components/Footer/Footer'
+import { fetchFromAPI } from '../../fetchFromAPI'
+
+
 const Games = () => {
+
   return (
     <div className='game'>
         <Navbar />

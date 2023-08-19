@@ -6,6 +6,7 @@ import Scroller from "../Scroller/Scroller";
 import logo from "../../assets/logo.png";
 import { address, abi } from "../../contracts_abi_address/NFT"
 import { ethers, providers } from "ethers";
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
   async function connect() {
@@ -118,10 +119,10 @@ const Navbar = () => {
       {nav ? (
         <div className="opened-nav linear duration-500 ">
           <div className="opened-nav-top">
-            <div className="opened-nav-head">
+            <Link to='/' className="opened-nav-head">
               <span>METABET</span>
               <img src={logo} alt="" />
-            </div>
+            </Link>
             <div className="opened-nav-close">
               <div>CLOSE</div>
               <span>
@@ -139,10 +140,10 @@ const Navbar = () => {
             <div className="menu-card">
               <div className="menu-card-heading">MENU</div>
               <div className="menu-card-list">
-                <a href="">ABOUT US</a>
-                <a href="">OUR TEAM</a>
-                <a href="">GAMES</a>
-                <a href="">TECH STACK</a>
+                <Link to='/'>ABOUT US</Link>
+                <Link to='/team'>OUR TEAM</Link>
+                <Link to='/games'>GAMES</Link>
+                <Link to='/'>TECH STACK</Link>
               </div>
             </div>
           </div>
@@ -155,14 +156,14 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="navbar linear duration-500">
-          <div className="nav-part1">
+          <Link to='/' className="nav-part1">
             <span className="logoHeading">METABET</span>
             <img src={logo} alt="" />
-          </div>
+          </Link>
           <div className="nav-part2">
             <div className="nav-part2-main1">
-              <div className="nav-games" >GAMES</div>
-              <div className="nav-team" onClick={NFT_Gen}>OUR TEAM</div>
+              <Link to='/games' className="nav-games" >GAMES</Link>
+              <Link to='/team' className="nav-team" onClick={NFT_Gen}>OUR TEAM</Link>
             </div>
             <div className="nav-part2-main2">
               <div className="nav-connect cursor-pointer" onClick={connect}>

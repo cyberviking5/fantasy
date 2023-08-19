@@ -13,10 +13,11 @@ import CustomEase from 'gsap/CustomEase'
 import Rating from '../../components/Rating/Rating';
 import Tech from '../../components/Tech/Tech';
 import Footer from '../../components/Footer/Footer';
+import {useState , useEffect} from 'react'
+import { fetchFromAPI } from '../../fetchFromAPI';
 
 
 const Home = () => {
-
 
   document.querySelectorAll(".elem").forEach(function (elem) {
     var rotate = 0;

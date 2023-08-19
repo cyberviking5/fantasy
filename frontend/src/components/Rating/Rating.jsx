@@ -3,7 +3,6 @@ import ratings from '../../assets/data.json'
 import './Rating.css'
 const Rating = () => {
 
-    console.log(ratings)
   return (<div className='rate'>
     <div className='cards'>
             {ratings.map((rating,index)=>(
