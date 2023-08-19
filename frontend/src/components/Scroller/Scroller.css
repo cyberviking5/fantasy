@@ -14,7 +14,7 @@
     display: inline-block;
     white-space: nowrap;
     animation: scroll;
-    animation-duration: 7s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }

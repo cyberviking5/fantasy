@@ -15,6 +15,7 @@ import Tech from '../../components/Tech/Tech';
 import Footer from '../../components/Footer/Footer';
 import {useState , useEffect} from 'react'
 import { fetchFromAPI } from '../../fetchFromAPI';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -101,22 +102,30 @@ const Home = () => {
         </div>
         
         <div id="second-tab">
+          <Link to='/games'>
           <div className="elem">
             <img src={crickettt} alt="" />
             <h1>CRICKET</h1>
           </div>
+          </Link>
+          <Link to='/games'>
           <div className="elem">
             <img src={footballl} alt="" />
             <h1>FOOTBALL</h1>
           </div>
+          </Link>
+          <Link to='games'>
           <div className="elem ">
             <img src={hockeyyy} alt="" />
             <h1>HOCKEY</h1>
           </div>
+          </Link>
+          <Link to='/games'>
           <div className="elem elemlast">
             <img src={tennisss} alt="" />
             <h1>TENNIS</h1>
           </div>
+          </Link>
         </div>
       </div>
 
