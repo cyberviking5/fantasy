@@ -138,6 +138,9 @@
     font-style: normal;
     font-weight: 700;
 }
+.sec-feat span{
+    color: red;
+}
 .sec-fea-p{
     color: #FFF;
     font-family: 'Poppins', sans-serif;

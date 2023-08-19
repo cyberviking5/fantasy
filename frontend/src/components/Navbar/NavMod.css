@@ -5,6 +5,7 @@
     width: 100%;
     color: white; 
     background-color: black;
+    transition: all ease-in-out 2s;
 
 }
 .opened-nav-top{

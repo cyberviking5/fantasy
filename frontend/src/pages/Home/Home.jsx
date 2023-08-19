@@ -99,7 +99,7 @@ const Home = () => {
 
       <div className="panel" id="second">
         <div className="sec-head">
-          <div className="sec-feat">FEATURED GAMES</div>
+          <div className="sec-feat">FEATURED <span>GAMES</span></div>
           <div className="sec-fea-p">FAVORITES GAMES ON OUR PLATFORM</div>
         </div>
         

@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='footer'>
         <div className='foot-top'>
           <div className='ft-left'>
-            <div><Link to='/'>FACEBOOK</Link><br /><Link to='/'>INSTAGRAM</Link><br /><Link to='/'>LIKNEDIN</Link><br /><Link to='/'>GITHUB</Link></div>
+            <div><Link to='/fb'>FACEBOOK</Link><br /><Link to='/ig'>INSTAGRAM</Link><br /><Link to='/ln'>LINKEDIN</Link><br /><a href='https://github.com/cyberviking5/fantasy'>GITHUB</a></div>
             <div><Link to='/'>ABOUT US</Link><br /><Link to='/team'>OUR TEAM</Link><br /><Link to='/games'>GAMES</Link><br /><Link to='/'>TECH STACK</Link></div>
           </div>
           <div className='ft-right'><span>MADE BY METABOYS</span><br /><span>POWERED BY OVER ENGINEERED</span><br /><span>990 PVT LIMITED</span></div>
