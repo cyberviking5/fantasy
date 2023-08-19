@@ -34,7 +34,7 @@ const Hock = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetchFromAPI('list-live?Category=soccer&Timezone=-7');
+                const response = await fetchFromAPI('list-live?Category=hockey');
                 
                 if (response.Stages && response.Stages.length > 0 && response.Stages[0].Events && response.Stages[0].Events.length > 0) {
                     setT1(response.Stages[0].Events[0].T1[0].Abr);
