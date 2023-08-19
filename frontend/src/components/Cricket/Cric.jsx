@@ -2,11 +2,15 @@ import React , {useEffect , useState} from 'react'
 import './Cric.css'
 import { fetchFromAPI } from '../../fetchFromAPI';
 import { address1, abi1 } from "../../contracts_abi_address/NFT"
+import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan"
 import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
 import Modal from './Modal';
 
 const Cric = () => {
+  const [num,setnum] = useState('');
+  const [num1,setnum1] = useState('');
+  const [flag,setflag]=useState('0');
 
   
   const [isOpen, setIsOpen] = useState(false)
@@ -17,10 +21,10 @@ const Cric = () => {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
-            const contract = new ethers.Contract(address1, abi1, signer);
+            const contract = new ethers.Contract(address, abi, signer);
             const transactionResponse = await contract.fn_RequestFlashLoan(
               "0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f",
-              10
+              num1
             );
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
@@ -38,7 +42,7 @@ const Cric = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(address2, abi2, signer);
             // const transactionResponse1=await contract.setMatchStatusNotStarted()
-            const transactionResponse = await contract.enter({value:ethers.utils.parseEther("0.0001")})
+            const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
@@ -93,7 +97,6 @@ const Cric = () => {
           console.log(e);
         }
       }
-
     const [t1,setT1] = useState('');
     const [t2,setT2] = useState('');
     const [r1,setR1] = useState('0');
@@ -168,12 +171,12 @@ const Cric = () => {
       <div className="g3">
         <div className="g-butt">
           <p>Team1 will win ?</p>
-          <button onClick={enter}>Yes</button>
-          <button onClick={withdraw}>No</button>
+          <button onClick={()=>{setflag('1')}}>Yes</button>
+          <button>No</button>
         </div>
         <div className="g-sub">
-          <button onClick={NFT_Gen}>Submit</button>{" "}
-          <input type="number" placeholder="Enter the amount" />
+          <button onClick={enter}>Submit</button>{" "}
+          <input type="number" placeholder="Enter the amount" value={num} onChange={(e)=>{setnum(e.target.value)}} />
         </div>
         <button className="rewardC" onClick={() => setIsOpen(true)} >
           Rewards
@@ -195,8 +198,8 @@ const Cric = () => {
           <h2>Need Loan ?</h2>
           <p>Now get the Flash Loan instantly!!!</p>
           <div>
-            <input type="number" placeholder="Enter the amount" />
-            <button>Get Loan</button>
+            <input type="number" placeholder="Enter the amount"  value={num1} onChange={(e)=>{setnum1(e.target.value)}}/>
+            <button onClick={loan}>Get Loan</button>
           </div>
         </div>
       </div>
