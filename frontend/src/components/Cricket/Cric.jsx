@@ -9,6 +9,7 @@ import { ethers, providers } from "ethers";
 const Cric = () => {
   const [num,setnum] = useState('');
   const [num1,setnum1] = useState('');
+  const [flag,setflag]=useState('0');
 
     async function loan() {
         try {
@@ -168,8 +169,8 @@ const Cric = () => {
             </div>
         </div>
         <div className='g3'>
-        <div className='g-butt'><p>Team1 will win ?</p><button onClick={enter}>Yes</button><button onClick={withdraw}>No</button></div>
-            <div className='g-sub'><button onClick={NFT_Gen}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}} /></div>
+        <div className='g-butt'><p>Team1 will win ?</p><button onClick={()=>{setflag('1')}}>Yes</button><button>No</button></div>
+            <div className='g-sub'><button onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}} /></div>
         </div>
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>
