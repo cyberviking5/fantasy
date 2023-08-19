@@ -1,4 +1,4 @@
-export const address2 = "0xE561d4D8fD2dFdc1f069B8596A47049ef1e9A1d4";
+export const address2 = "0x1EC1e12C33e70c4c4A1F225085595bD2e16793e1";
 export const abi2 =[
   {
     inputs: [
@@ -223,5 +223,9 @@ export const abi2 =[
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
+  },
+  {
+    stateMutability: "payable",
+    type: "receive"
   }
 ]
