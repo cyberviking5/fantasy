@@ -1,5 +1,5 @@
-export const address = "0xfD3Dc2C2668336907369f5DB800ec286de8fC08a";
-export const abi =[
+export const address2 = "0xE561d4D8fD2dFdc1f069B8596A47049ef1e9A1d4";
+export const abi2 =[
   {
     inputs: [
       {
@@ -154,19 +154,6 @@ export const abi =[
   },
   {
     inputs: [],
-    name: "getMatchStatus",
-    outputs: [
-      {
-        internalType: "enum Gamble.MatchStatus",
-        name: "",
-        type: "uint8"
-      }
-    ],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
     name: "getOwner",
     outputs: [
       {
@@ -198,93 +185,15 @@ export const abi =[
     type: "function"
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "user",
-        type: "address"
-      }
-    ],
-    name: "getUserResult",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-      }
-    ],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
     inputs: [],
-    name: "setMatchStatusCompleted",
+    name: "settleTeamResultLoss",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
   },
   {
     inputs: [],
-    name: "setMatchStatusNotStarted",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "setMatchStatusStarted",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "user",
-        type: "address"
-      }
-    ],
-    name: "setResultStatusLive",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "user",
-        type: "address"
-      }
-    ],
-    name: "setResultStatusLost",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "user",
-        type: "address"
-      }
-    ],
-    name: "setResultStatusWon",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "user",
-        type: "address"
-      }
-    ],
-    name: "settleTeamResult",
+    name: "settleTeamResultWon",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -303,11 +212,6 @@ export const abi =[
         internalType: "bool",
         name: "hasEntered",
         type: "bool"
-      },
-      {
-        internalType: "uint256",
-        name: "result",
-        type: "uint256"
       }
     ],
     stateMutability: "view",
@@ -320,4 +224,4 @@ export const abi =[
     stateMutability: "nonpayable",
     type: "function"
   }
-];
+]

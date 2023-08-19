@@ -1,6 +1,6 @@
-export const address= "0xd5d000D1B96f98e6156eFd51A25f679C6c02F86B";
+export const address1= "0xd5d000D1B96f98e6156eFd51A25f679C6c02F86B";
 
-export const abi= [
+export const abi1= [
   {
     inputs: [],
     stateMutability: "nonpayable",
