@@ -1,6 +1,7 @@
 import React , {useEffect, useState} from 'react'
 import './Foot.css'
 import { fetchFromAPI } from '../../fetchFromAPI';
+import Modal from './Modal';
 
 const Foot = () => {
 
@@ -11,6 +12,8 @@ const Foot = () => {
     const [time,setTime] = useState('');
     const [matchId, setMatchId] = useState('');
     const [live,setLive] = useState(true);
+    const [isOpen, setIsOpen] = useState(false)
+    
     // const [he,setHe] = useState('');
 
     // const interval = setInterval(()=>{
@@ -52,6 +55,7 @@ const Foot = () => {
   return (
     <div>
         <div className='game-container'>
+         <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
         <div className='gameCont-head'><span>FOOTBALL</span></div>
         <div className='game2'>
             <h3>{live?`LIVE SCORE`:`No live matches happening right now`}</h3>
@@ -62,7 +66,8 @@ const Foot = () => {
         </div>
         <div className='g3'>
             <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div>
-            <div className='g-sub'><button>Submit</button> <input type="number" placeholder='Enter the amount' /></div>
+            <div className='g-sub'><button className='sub'>Submit</button> <input type="number" placeholder='Enter the amount' /> <button className='rewardF' onClick={() => setIsOpen(true)}>Rewards</button></div>
+            
         </div>
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>

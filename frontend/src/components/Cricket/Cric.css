@@ -106,6 +106,17 @@ line-height: normal;
     background-color: green;
     border-radius: 5px;
 }
+.rewardC{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 40px;
+    font-size: 20px;
+    width: 150px;
+    background-color: rgb(0, 47, 128);
+    border-radius: 5px;
+}
 .g-sub{
     display: flex;
     align-items: center;

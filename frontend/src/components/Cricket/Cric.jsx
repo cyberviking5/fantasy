@@ -4,8 +4,12 @@ import { fetchFromAPI } from '../../fetchFromAPI';
 import { address1, abi1 } from "../../contracts_abi_address/NFT"
 import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
+import Modal from './Modal';
 
 const Cric = () => {
+
+  
+  const [isOpen, setIsOpen] = useState(false)
 
     async function loan() {
         try {
@@ -102,23 +106,6 @@ const Cric = () => {
     const [live,setLive] = useState(true);
 
 
-    // useEffect((time)=>{
-    //     fetchFromAPI(`list-by-date?Category=cricket&Date=20230818`)
-    //     .then((data)=>(
-    //         console.log(data),
-    //         setT1(data.Stages[0].Events[0].T1[0].Abr),
-    //         setT2(data.Stages[0].Events[0].T2[0].Abr),
-    //         setR1(data.Stages[0].Events[0].Tr1C1),
-    //         setR2(data.Stages[0].Events[0].Tr2C1),
-    //         setO1(data.Stages[0].Events[0].Tr1CO1),
-    //         setO2(data.Stages[0].Events[0].Tr2CO1),
-    //         setW1(data.Stages[0].Events[0].Tr1CW1),
-    //         setW2(data.Stages[0].Events[0].Tr2CW1),
-    //         setMatchId(data.Stages[0].Events[0].Eid)
-    //         ))    
-    //   },[1]);
-
-
     useEffect(() => {
       const fetchData = async () => {
           try {
@@ -155,40 +142,66 @@ const Cric = () => {
 
 
   return (
-    <div className='cricket'>
-        <div className='cric-head'><span>CRICKET</span></div>
-        <div className='cric2'>
-        <h3>{live?`LIVE SCORE`:`No live matches happening right now`}</h3>
-            <div className='cric-stat'>
-            <div className='cric-score'><span className='run'>{r1}</span><span className='over'>({o1})</span><span className='c-name'>{t1}</span></div>
-            <div className='cric-vs'><span>VS</span></div>
-            <div className='cric-score'><span className='run'>{r2}</span><span className='over'>({o2})</span><span className='c-name'>{t2}</span></div>
-            </div>
+    <div className="cricket">
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
+      <div className="cric-head">
+        <span>CRICKET</span>
+      </div>
+      <div className="cric2">
+        <h3>{live ? `LIVE SCORE` : `No live matches happening right now`}</h3>
+        <div className="cric-stat">
+          <div className="cric-score">
+            <span className="run">{r1}</span>
+            <span className="over">({o1})</span>
+            <span className="c-name">{t1}</span>
+          </div>
+          <div className="cric-vs">
+            <span>VS</span>
+          </div>
+          <div className="cric-score">
+            <span className="run">{r2}</span>
+            <span className="over">({o2})</span>
+            <span className="c-name">{t2}</span>
+          </div>
         </div>
-        <div className='g3'>
-        <div className='g-butt'><p>Team1 will win ?</p><button onClick={enter}>Yes</button><button onClick={withdraw}>No</button></div>
-            <div className='g-sub'><button onClick={NFT_Gen}>Submit</button> <input type="number" placeholder='Enter the amount' /></div>
+      </div>
+      <div className="g3">
+        <div className="g-butt">
+          <p>Team1 will win ?</p>
+          <button onClick={enter}>Yes</button>
+          <button onClick={withdraw}>No</button>
         </div>
-        <div className='g4'>
-            <div className='g-rules'><h2>RULES</h2>
-            <ul>
-                <li>WIN : More than you bet</li>
-                <li>LOSE : No return</li>
+        <div className="g-sub">
+          <button onClick={NFT_Gen}>Submit</button>{" "}
+          <input type="number" placeholder="Enter the amount" />
+        </div>
+        <button className="rewardC" onClick={() => setIsOpen(true)} >
+          Rewards
+        </button>
+      </div>
+      <div className="g4">
+        <div className="g-rules">
+          <h2>RULES</h2>
+          <ul>
+            <li>WIN : More than you bet</li>
+            <li>LOSE : No return</li>
 
-                <li>MINIMUM AMOUNT to bet : <span>0.01 ETH</span></li>
-            </ul>
-            </div>
-            <div className='g-loan'>
-                <h2>Need Loan ?</h2>
-                <p>Now get the Flash Loan instantly!!!</p>
-                <div>
-                <input type="number" placeholder='Enter the amount'/>
-                <button>Get Loan</button>
-                </div>
-            </div>
+            <li>
+              MINIMUM AMOUNT to bet : <span>0.01 ETH</span>
+            </li>
+          </ul>
         </div>
+        <div className="g-loan">
+          <h2>Need Loan ?</h2>
+          <p>Now get the Flash Loan instantly!!!</p>
+          <div>
+            <input type="number" placeholder="Enter the amount" />
+            <button>Get Loan</button>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Cric

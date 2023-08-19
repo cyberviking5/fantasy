@@ -1,6 +1,7 @@
 import React,{useEffect , useState} from 'react'
 import './Hock.css'
 import { fetchFromAPI } from '../../fetchFromAPI';
+import Modal from './Modal';
 
 const Hock = () => {
 
@@ -12,6 +13,7 @@ const Hock = () => {
     const [time,setTime] = useState('');
     const [matchId, setMatchId] = useState('');
     const [live,setLive] = useState(true);
+    const [isOpen, setIsOpen] = useState(false)
     // const [he,setHe] = useState('');
 
     // const interval = setInterval(()=>{
@@ -66,6 +68,7 @@ const Hock = () => {
   return (
     <div>
       <div className='gameH-container'>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
         <div className='gameCont-head'><span>HOCKEY</span></div>
         <div className='game2'>
         <h3>{live?`LIVE SCORE`:`No live matches happening right now`}</h3>
@@ -76,7 +79,8 @@ const Hock = () => {
         </div>
         <div className='g3'>
         <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div>
-            <div className='g-sub'><button>Submit</button> <input type="number" placeholder='Enter the amount' /></div>
+            <div className='g-sub'><button>Submit</button> <input type="number" placeholder='Enter the amount' /><button className='rewardH' onClick={() => setIsOpen(true)}>Rewards</button></div>
+            
         </div>
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>
