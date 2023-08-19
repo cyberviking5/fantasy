@@ -69,7 +69,8 @@ const Foot = () => {
             <ul>
                 <li>WIN : More than you bet</li>
                 <li>LOSE : No return</li>
-                <li>MINIMUM AMOUNT to bet : <span>1 ETH</span></li>
+
+                <li>MINIMUM AMOUNT to bet : <span>0.01 ETH</span></li>
             </ul>
             </div>
             <div className='g-loan'>
