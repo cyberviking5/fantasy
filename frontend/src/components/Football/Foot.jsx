@@ -54,7 +54,7 @@ const Foot = () => {
         <div className='game-container'>
         <div className='gameCont-head'><span>FOOTBALL</span></div>
         <div className='game2'>
-            <h3>LIVE SCORE</h3>
+            <h3>{live?`LIVE SCORE`:`No live matches happening right now`}</h3>
             <div className='game-stat'>
                 <div className='team-name'><div>{t1}</div><span className='f-score'>{g1} - {g2}</span><div>{t2}</div></div>
                 <div className='time'><span>{time}</span></div>
@@ -67,9 +67,9 @@ const Foot = () => {
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>
             <ul>
-                <li>WIN : 2x the you bet</li>
+                <li>WIN : More than you bet</li>
                 <li>LOSE : No return</li>
-                <li>MINIMUM AMOUNT to bet : <span>100 ETH</span></li>
+                <li>MINIMUM AMOUNT to bet : <span>1 ETH</span></li>
             </ul>
             </div>
             <div className='g-loan'>

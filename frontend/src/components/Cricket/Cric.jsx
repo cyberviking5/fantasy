@@ -99,30 +99,66 @@ const Cric = () => {
     const [w1,setW1] = useState('0');
     const [w2,setW2] = useState('0');
     const [matchId, setMatchId] = useState('');
+    const [live,setLive] = useState(true);
 
 
-    useEffect((time)=>{
-        fetchFromAPI(`list-by-date?Category=cricket&Date=20230818`)
-        .then((data)=>(
-            console.log(data),
-            setT1(data.Stages[0].Events[0].T1[0].Abr),
-            setT2(data.Stages[0].Events[0].T2[0].Abr),
-            setR1(data.Stages[0].Events[0].Tr1C1),
-            setR2(data.Stages[0].Events[0].Tr2C1),
-            setO1(data.Stages[0].Events[0].Tr1CO1),
-            setO2(data.Stages[0].Events[0].Tr2CO1),
-            setW1(data.Stages[0].Events[0].Tr1CW1),
-            setW2(data.Stages[0].Events[0].Tr2CW1),
-            setMatchId(data.Stages[0].Events[0].Eid)
-            ))    
-      },[1]);
+    // useEffect((time)=>{
+    //     fetchFromAPI(`list-by-date?Category=cricket&Date=20230818`)
+    //     .then((data)=>(
+    //         console.log(data),
+    //         setT1(data.Stages[0].Events[0].T1[0].Abr),
+    //         setT2(data.Stages[0].Events[0].T2[0].Abr),
+    //         setR1(data.Stages[0].Events[0].Tr1C1),
+    //         setR2(data.Stages[0].Events[0].Tr2C1),
+    //         setO1(data.Stages[0].Events[0].Tr1CO1),
+    //         setO2(data.Stages[0].Events[0].Tr2CO1),
+    //         setW1(data.Stages[0].Events[0].Tr1CW1),
+    //         setW2(data.Stages[0].Events[0].Tr2CW1),
+    //         setMatchId(data.Stages[0].Events[0].Eid)
+    //         ))    
+    //   },[1]);
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await fetchFromAPI('list-live?Category=cricket');
+              
+              if (response.Stages && response.Stages.length > 0 && response.Stages[0].Events && response.Stages[0].Events.length > 0) {
+                setT1(response.Stages[0].Events[0].T1[0].Abr);
+                setT2(response.Stages[0].Events[0].T2[0].Abr);
+                setR1(response.Stages[0].Events[0].Tr1C1);
+                setR2(response.Stages[0].Events[0].Tr2C1);
+                setO1(response.Stages[0].Events[0].Tr1CO1);
+                setO2(response.Stages[0].Events[0].Tr2CO1);
+                setW1(response.Stages[0].Events[0].Tr1CW1);
+                setW2(response.Stages[0].Events[0].Tr2CW1);
+                setMatchId(response.Stages[0].Events[0].Eid)
+              } else {
+                  setLive(false);
+              }
+          } catch (error) {
+              if (error.response && error.response.status === 429) {
+
+                  // Too Many Requests: Implement a backoff strategy
+                  // setTimeout(fetchData, 5000); // Retry after 5 seconds
+              } else {
+                  // Handle other errors
+                  console.error('Error fetching data:', error);
+              }
+          }
+      };
+
+      fetchData();
+  }, []);
+
 
 
   return (
     <div className='cricket'>
         <div className='cric-head'><span>CRICKET</span></div>
         <div className='cric2'>
-            <h3>LIVE SCORE</h3>
+        <h3>{live?`LIVE SCORE`:`No live matches happening right now`}</h3>
             <div className='cric-stat'>
             <div className='cric-score'><span className='run'>{r1}</span><span className='over'>({o1})</span><span className='c-name'>{t1}</span></div>
             <div className='cric-vs'><span>VS</span></div>
@@ -136,9 +172,9 @@ const Cric = () => {
         <div className='g4'>
             <div className='g-rules'><h2>RULES</h2>
             <ul>
-                <li>WIN : 2x the you bet</li>
+                <li>WIN : More than you bet</li>
                 <li>LOSE : No return</li>
-                <li>MINIMUM AMOUNT to bet : <span>100 ETH</span></li>
+                <li>MINIMUM AMOUNT to bet : <span>1 ETH</span></li>
             </ul>
             </div>
             <div className='g-loan'>
