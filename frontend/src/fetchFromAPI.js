@@ -10,7 +10,7 @@ const options = {
     Timezone: '-7'
   },
   headers: {
-    'X-RapidAPI-Key': 'a2ae15490emshba7b6e76542bba6p18d8c1jsn3ec151da107f',
+    'X-RapidAPI-Key': '5a96931f16mshda9e9f1d53db236p1ac656jsnc7ddbd86dcb3',
     'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
   }
 };
