@@ -42,7 +42,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-
+    margin-bottom:180px;
 }
 .team-man{
     /* padding: 20px 0; */

@@ -10,6 +10,7 @@ import {
   FaGithub,
   FaBitcoin
 } from 'react-icons/fa'
+import Footer from '../../components/Footer/Footer'
 
 const Team = () => {
   return (
@@ -54,6 +55,8 @@ const Team = () => {
             </div>
           </div>
        </div>
+
+       <Footer />
     </div>
   )
 }
