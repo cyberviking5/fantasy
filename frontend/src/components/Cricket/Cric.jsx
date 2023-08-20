@@ -7,6 +7,7 @@ import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
 import { toast } from 'react-toastify';
 import Modal from './Modal';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cric = () => {
   const [num,setnum] = useState('');
@@ -31,7 +32,8 @@ const Cric = () => {
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
           }else{
-            toast.warning("please install metamask")
+            console.log("error")
+            toast("please install metamask")
           }
         } catch (e) {
           console.log(e);
