@@ -16,9 +16,10 @@
     color: #FFF;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 140.29px;
-    font-style: normal;
     font-weight: 700;
-    line-height: 60.9px; /* 43.41% */
+}
+.th-main img{
+    width:150px;
 }
 .th-p{
     color: #FFF;

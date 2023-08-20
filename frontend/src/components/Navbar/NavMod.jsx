@@ -58,8 +58,8 @@ const s2 = () =>{
       <div className="opened-nav linear duration-500 ">
           <div className="opened-nav-top">
             <Link to="/" className="opened-nav-head">
-              <span>METABET</span>
               <img src={logo} alt="" />
+              <span>METABET</span>
             </Link>
             <div className="opened-nav-close">
               <div>CLOSE</div>

@@ -43,8 +43,8 @@ const Navbar = () => {
       ) : (
         <div className="navbar linear duration-500">
           <Link to="/" className="nav-part1">
-            <span className="logoHeading">METABET</span>
             <img src={logo} alt="" />
+            <span className="logoHeading">METABET</span>
           </Link>
           <div className="nav-part2">
             <div className="nav-part2-main1">

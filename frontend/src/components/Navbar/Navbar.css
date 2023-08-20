@@ -56,107 +56,10 @@
     flex-direction: row;
     align-items: center;
     gap:10px;
+    user-select: none;
 }
 .menu-icon-open{
     align-items: center;
 }
 
 
-
-/* .opened-nav{
-    position:relative;
-    min-height: 100vh;
-    width: 100%;
-    color: white; 
-    background-color: black;
-
-}
-.opened-nav-top{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 50px;
-    font-family: 'Bebas Neue', sans-serif;}
-.opened-nav-head{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-}
-.opened-nav-head img{
-    height: 48px;
-}
-.opened-nav-head span{
-    font-size: 56px;
-    font-family: 'Six Caps', sans-serif;
-    font-weight: 600;
-}
-.opened-nav-close{
-    display: flex;
-    flex-direction: row;
-    gap:10px;
-    font-size: 25px;
-    align-items: center;
-}
-
-.opened-nav-main{
-    padding: 0px 50px;
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.highlight{
-    width: 70%;
-    color: #FFF;
-    font-family: 'Bebas Neue', sans-serif;   
-    font-size: 241.3px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 201.429px;
-}
-.highlight span{
-    color:red;
-}
-
-.menu-card{
-    width:25%;
-    padding:30px;
-    background-color: #222;
-    border-radius: 21px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-.menu-card-heading{
-    color: #FFF;
-    font-family: 'Bebas Neue', sans-serif;font-size: 24px;
-font-style: normal;
-font-weight: 700;
-}
-
-.menu-card-list{
-    display: flex;
-    flex-direction: column;
-    color: #FFF;
-    font-family: 'Bebas Neue', sans-serif;    font-size: 47.609px;
-    font-style: normal;
-    line-height: 50px;
-}
-
-.opened-nav-bt{
-    display: flex;
-    flex-direction: row;
-    padding: 40px 50px 0 50px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    color: #FFF;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-} */

@@ -18,6 +18,7 @@ import { fetchFromAPI } from '../../fetchFromAPI';
 import { Link } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis'
 import {motion} from 'framer-motion'
+import landinglogo from '../../assets/landing_logo.png'
 
 
 const Home = () => {
@@ -70,13 +71,13 @@ requestAnimationFrame(raf)
           <div className="main">
             <div className="hero">
               <div className="hero-heading">
-                NOW BET <br />
-                ONLINE IN A MORE SECURE <br />
-                WAY WITH <span>ME</span> US
+                <p>NOW BET</p> 
+                <p>ONLINE IN A MORE SECURE </p>
+                 <div className='kuch'><img src={landinglogo} alt=""/><p>WAY WITH US</p></div>
               </div>
-              <div className="hero-buttons">
-                <button><a href='#second' onClick={(()=>lenis.scrollTo('#second'))}>GAMES</a></button>
-                <button><a href='#fourth' onClick={(()=>lenis.scrollTo('#fourth'))}>TECH STACK</a></button>
+              <div className='hero-buttons'>
+                <a href='#second' className='buttonss' onClick={(()=>lenis.scrollTo('#second'))}><button>GAMES</button></a>
+                <a href='#fourth' className='buttonss' onClick={(()=>lenis.scrollTo('#fourth'))}><button>TECH STACK</button></a>
               </div>
             </div>
             <div className="main-lastline">

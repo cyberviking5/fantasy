@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa'
 import Footer from '../../components/Footer/Footer'
 import {motion} from 'framer-motion'
+import logo from '../../assets/logo.png'
 
 const Team = () => {
   return (
@@ -20,7 +21,7 @@ const Team = () => {
     exit={{opacity:0}}  >
        <Navbar/>
        <div className='team-head'>
-          <div className='th-main'><FaBitcoin size={140}/>OUR TEAM</div>
+          <div className='th-main'><img src={logo} alt="" />OUR TEAM</div>
           <div className='th-p'>
             <p><span>MEATBET</span> is fueled by a dedicated team of blockchain enthusiasts,
                developers, designers, and industry experts. 
