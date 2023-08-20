@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import './Home.css'
-import {BsArrowUpRight , FiArrowUpRight} from 'react-icons/fi';
 import Scroller from '../../components/Scroller/Scroller';
 import paisa from '../../assets/paisa.mp4'
 import hockeyyy from '../../assets/hockeyyy.jpg'
@@ -14,7 +13,6 @@ import Rating from '../../components/Rating/Rating';
 import Tech from '../../components/Tech/Tech';
 import Footer from '../../components/Footer/Footer';
 import {useState , useEffect} from 'react'
-import { fetchFromAPI } from '../../fetchFromAPI';
 import { Link } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis'
 import {motion} from 'framer-motion'
