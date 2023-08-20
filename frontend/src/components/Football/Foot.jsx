@@ -13,6 +13,7 @@ const Foot = () => {
     const [num,setnum] = useState('');
     const [num1,setnum1] = useState('');
     const [id,setid]=useState('0');
+    const [flag,setflag]=useState('0');
     const [sub,setsub]=useState(true);
 
     async function loan() {
@@ -55,7 +56,7 @@ const Foot = () => {
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){toast.warning("Enter money in natural number");
+        }catch(e){toast.warning("Please enter the amount");
           console.log(e)}
       }
     
@@ -173,7 +174,7 @@ const Foot = () => {
             </div>
         </div>
         <div className='g3'>
-            <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div><div className='g-sub'>
+            <div className='g-butt'><p>Team1 will win ?</p><button onClick={()=>{setflag('1');toast.success("Response recorded")}}>Yes</button><button onClick={()=>{toast.success("Response recorded")}}>No</button></div><div className='g-sub'>
             {sub?(<div><button className='sub' onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/></div>):(<div><button className='sub' onClick={withdraw}>Withdraw</button></div>)} <button className='rewardF' onClick={async() => {await NFT_Gen()}}>Rewards</button></div>
             
         </div>
