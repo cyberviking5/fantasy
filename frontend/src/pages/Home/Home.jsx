@@ -17,7 +17,7 @@ import {useState , useEffect} from 'react'
 import { fetchFromAPI } from '../../fetchFromAPI';
 import { Link } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis'
-
+import {motion} from 'framer-motion'
 
 
 const Home = () => {
@@ -59,7 +59,11 @@ function raf(time) {
 
 requestAnimationFrame(raf)
   return (
-    <>
+    <motion.div 
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity:0}} 
+    >
       <div className="home  h-[100vh]">
         <Navbar />
         <div className="landing-page">
@@ -71,8 +75,8 @@ requestAnimationFrame(raf)
                 WAY WITH <span>ME</span> US
               </div>
               <div className="hero-buttons">
-                <button><a href='#second'>GAMES</a></button>
-                <button><a href='#fourth'>TECH STACK</a></button>
+                <button><a href='#second' onClick={(()=>lenis.scrollTo('#second'))}>GAMES</a></button>
+                <button><a href='#fourth' onClick={(()=>lenis.scrollTo('#fourth'))}>TECH STACK</a></button>
               </div>
             </div>
             <div className="main-lastline">
@@ -170,7 +174,7 @@ requestAnimationFrame(raf)
       </div>
 
       <Footer/>
-    </>
+    </motion.div>
   );
 }
 

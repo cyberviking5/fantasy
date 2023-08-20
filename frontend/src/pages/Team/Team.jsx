@@ -11,10 +11,13 @@ import {
   FaBitcoin
 } from 'react-icons/fa'
 import Footer from '../../components/Footer/Footer'
+import {motion} from 'framer-motion'
 
 const Team = () => {
   return (
-    <div>
+    <motion.div  initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity:0}}  >
        <Navbar/>
        <div className='team-head'>
           <div className='th-main'><FaBitcoin size={140}/>OUR TEAM</div>
@@ -57,7 +60,7 @@ const Team = () => {
        </div>
 
        <Footer />
-    </div>
+    </motion.div>
   )
 }
 

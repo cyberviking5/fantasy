@@ -6,6 +6,9 @@ import Scroller from "../Scroller/Scroller";
 import logo from '../../assets/logo.png'
 import {Link} from 'react-router-dom'
 import './NavMod.css'
+import {motion} from 'framer-motion'
+import Lenis from '@studio-freight/lenis';
+// import scrollTo from '@studio-freight/lenis';
 
 
 const MODAL_STYLES = {
@@ -29,9 +32,27 @@ const OVERLAY_STYLES = {
 
 export default function Modal({ cur, children, handleNav }) {
 
+  const lenis = new Lenis()
+  lenis.on('scroll', (e) => {
+  console.log(e)
+})
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+const s1 = () =>{
+    return lenis.scrollTo('#second')
+}
+const s2 = () =>{
+  return lenis.scrollTo('#fourth')
+}
+
 
   return ReactDom.createPortal(
-    <>
+    <motion.div initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity:0}}>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
       <div className="opened-nav linear duration-500 ">
@@ -59,10 +80,10 @@ export default function Modal({ cur, children, handleNav }) {
 
               {cur == "/" ? (
                 <div className="menu-card-list">
-                  <a href="#first" onClick={handleNav}>ABOUT US</a>
+                    <a href="#first" onClick={() => { handleNav();s1() }}>ABOUT US</a>
                   <Link to="/team">OUR TEAM</Link>
                   <Link to="/games">GAMES</Link>
-                  <a href="#fourth" onClick={handleNav}>TECH STACK</a>
+                  <a href="#fourth" onClick={() => { handleNav(); s2()}}>TECH STACK</a>
                 </div>
               ) : (
                 <div className="menu-card-list">
@@ -83,7 +104,7 @@ export default function Modal({ cur, children, handleNav }) {
         </div>
       </div>
        
-    </>,
+    </motion.div>,
     document.getElementById('portal')
   )
 }

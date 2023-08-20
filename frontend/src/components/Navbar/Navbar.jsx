@@ -8,6 +8,7 @@ import { address, abi } from "../../contracts_abi_address/NFT"
 import { ethers, providers } from "ethers";
 import {Link} from 'react-router-dom'
 import NavMod from './NavMod'
+import {motion} from 'framer-motion'
 
 const Navbar = () => {
 
@@ -33,57 +34,12 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    <motion.div 
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity:0}}>
       {nav ? (
-        // <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
         <NavMod cur={cur} handleNav={()=>{setNav()}}></NavMod>
-      //   <div className="opened-nav linear duration-500 ">
-      //     <div className="opened-nav-top">
-      //       <Link to="/" className="opened-nav-head">
-      //         <span>METABET</span>
-      //         <img src={logo} alt="" />
-      //       </Link>
-      //       <div className="opened-nav-close">
-      //         <div>CLOSE</div>
-      //         <span>
-      //           <AiOutlineClose size={50} onClick={handleNav} />
-      //         </span>
-      //       </div>
-      //     </div>
-
-      //     <Scroller />
-
-      //     <div className="opened-nav-main">
-      //       <div className="highlight">
-      //         BET WITH <span>BLOCKCHAIN</span>
-      //       </div>
-      //       <div className="menu-card">
-      //         <div className="menu-card-heading">MENU</div>
-
-      //         {cur == "/" ? (
-      //           <div className="menu-card-list">
-      //             <a href="#first">ABOUT US</a>
-      //             <Link to="/team">OUR TEAM</Link>
-      //             <Link to="/games">GAMES</Link>
-      //             <a href="#fourth">TECH STACK</a>
-      //           </div>
-      //         ) : (
-      //           <div className="menu-card-list">
-      //             <Link to='/'>ABOUT US</Link>
-      //             <Link to="/team">OUR TEAM</Link>
-      //             <Link to="/games">GAMES</Link>
-      //             <Link to='/'>ABOUT US</Link>
-      //           </div>
-      //         )}
-      //       </div>
-      //     </div>
-
-      //     <div className="opened-nav-bt">
-      //       <div>POWERED BY OVERENGINEERED</div>
-      //       <div>METABOYS</div>
-      //       <div>METABET © 2023 </div>
-      //     </div>
-      //   </div>
       ) : (
         <div className="navbar linear duration-500">
           <Link to="/" className="nav-part1">
@@ -113,7 +69,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </>
+    </motion.div>
   );
 };
 
