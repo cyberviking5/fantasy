@@ -61,10 +61,10 @@ const s2 = () =>{
               <img src={logo} alt="" />
               <span>METABET</span>
             </Link>
-            <div className="opened-nav-close">
+            <div className="opened-nav-close"  onClick={handleNav}>
               <div>CLOSE</div>
               <span>
-                <AiOutlineClose size={50} onClick={handleNav} />
+                <AiOutlineClose size={50} />
               </span>
             </div>
           </div>
