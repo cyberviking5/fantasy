@@ -5,12 +5,14 @@ import { address1, abi1 } from "../../contracts_abi_address/NFT"
 import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan"
 import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
+import { toast } from 'react-toastify';
 import Modal from './Modal';
 
 const Cric = () => {
   const [num,setnum] = useState('');
   const [num1,setnum1] = useState('');
   const [flag,setflag]=useState('0');
+  const [id,setid]=useState('0');
 
   
   const [isOpen, setIsOpen] = useState(false)
@@ -28,6 +30,8 @@ const Cric = () => {
             );
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
+          }else{
+            toast.warning("please install metamask")
           }
         } catch (e) {
           console.log(e);
@@ -46,6 +50,8 @@ const Cric = () => {
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
+          }else{
+            toast.warning("please install metamask")
           }
         }catch(e){console.log(e)}
       }
@@ -61,6 +67,9 @@ const Cric = () => {
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
             console.log("Done");
+          }
+          else{
+            toast.warning("please install metamask")
           }
         }catch(e){console.log(e)}
       }
@@ -78,7 +87,7 @@ const Cric = () => {
             await listenForTransactionMined(transactionResponse, provider);
             console.log(transactionResponse)
             const number=await contract.getTokenCounter()
-            console.log(number)
+            setid(parseInt(number._hex));
         }
         catch(e){console.log(e)}
       }
@@ -146,7 +155,7 @@ const Cric = () => {
 
   return (
     <div className="cricket">
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
+      <Modal token_id={id} open={isOpen} onClose={() => setIsOpen(false)}></Modal>
       <div className="cric-head">
         <span>CRICKET</span>
       </div>
@@ -178,7 +187,7 @@ const Cric = () => {
           <button onClick={enter}>Submit</button>{" "}
           <input type="number" placeholder="Enter the amount" value={num} onChange={(e)=>{setnum(e.target.value)}} />
         </div>
-        <button className="rewardC" onClick={() => setIsOpen(true)} >
+        <button className="rewardC" onClick={async() => {await NFT_Gen();setIsOpen(true)}} >
           Rewards
         </button>
       </div>

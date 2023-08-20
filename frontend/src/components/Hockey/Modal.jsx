@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import win from '../../assets/win.mp4'
+import win from '../../assets/satoru-gojo-jujutsu-2880x1800-10828.png'
 import './Modal.css'
 
 const MODAL_STYLES = {
@@ -31,7 +31,7 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 }
 
-export default function Modal({ open, children, onClose }) {
+export default function Modal({ token_id,open, children, onClose }) {
   if (!open) return null
 
   return ReactDom.createPortal(
@@ -44,9 +44,9 @@ export default function Modal({ open, children, onClose }) {
               </span>
             </div>
         <h1 className='mod-h1'>YOUR REWARDS</h1>
-        <video autoPlay loop muted src={win}></video>
-        <p className='modP'>TOKEN ID : </p>
-        <p className='modP'>TOKEN KI MAA KA BHOSDA : </p>
+        <img src={win} className='h-[240px] w-[360px]' ></img>
+        <p className='modP'>TOKEN ADDRESS : 0xBe7aADAc5C8553eDB40a94d699B7eEcFa06945Be </p>
+        <p className='modP'>TOKEN ID: {token_id}</p>
       </div>
     </>,
     document.getElementById('portal')

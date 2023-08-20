@@ -10,8 +10,8 @@ const PUBLIC_KEY = process.env.PUBLIC_KEY;
         accounts = await ethers.getSigners();
         deployer = accounts[0];
         user1=accounts[1];
-        await deployments.fixture(["Gamble"]);
-        Gamble = await ethers.getContract("Gamble");
+        await deployments.fixture(["Gamble1"]);
+        Gamble = await ethers.getContract("Gamble1");
       });
 
       describe("Constructor", () => {

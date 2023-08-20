@@ -29,7 +29,7 @@ const PUBLIC_KEY = process.env.PUBLIC_KEY;
           describe("Mint NFT", () => {
             let txResponse
             beforeEach(async () => {
-                txResponse = await basicNft.mintNFT(PUBLIC_KEY,"https://gateway.pinata.cloud/ipfs/QmfTfVhMGjyEj7jmr8awii3UnPK4BNekXq8trLkG1ZN9WY")
+                txResponse = await basicNft.mintNFT("https://gateway.pinata.cloud/ipfs/QmfTfVhMGjyEj7jmr8awii3UnPK4BNekXq8trLkG1ZN9WY")
                 await txResponse.wait(1)
             })
             it("Allows users to mint an NFT, and updates appropriately", async function () {

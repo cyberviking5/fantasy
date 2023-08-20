@@ -5,11 +5,15 @@ import { address1, abi1 } from "../../contracts_abi_address/NFT"
 import {address4,abi4} from '../../contracts_abi_address/Gamble2'
 import { address, abi } from "../../contracts_abi_address/SimpleFlashLoan"
 import { ethers, providers } from "ethers";
+import { toast } from 'react-toastify';
+
 import Modal from './Modal';
 
 const Hock = () => {
     const [num,setnum] = useState('');
     const [num1,setnum1] = useState('');
+    const [id,setid]=useState('0');
+
     async function loan() {
         try {
           if (window.ethereum !== "undefined") {
@@ -23,6 +27,8 @@ const Hock = () => {
             );
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
+          }else{
+            toast.warning("please install metamask")
           }
         } catch (e) {
           console.log(e);
@@ -41,6 +47,8 @@ const Hock = () => {
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
             console.log("Done");
+          }else{
+            toast.warning("please install metamask")
           }
         }catch(e){console.log(e)}
       }
@@ -56,6 +64,8 @@ const Hock = () => {
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
             console.log("Done");
+          }else{
+            toast.warning("please install metamask")
           }
         }catch(e){console.log(e)}
       }
@@ -73,7 +83,7 @@ const Hock = () => {
             await listenForTransactionMined(transactionResponse, provider);
             console.log(transactionResponse)
             const number=await contract.getTokenCounter()
-            console.log(number)
+            setid(parseInt(number._hex));
         }
         catch(e){console.log(e)}
       }
@@ -156,7 +166,7 @@ const Hock = () => {
   return (
     <div>
       <div className='gameH-container'>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
+      <Modal  token_id={id} open={isOpen} onClose={() => setIsOpen(false)}></Modal>
         <div className='gameCont-head'><span>HOCKEY</span></div>
         <div className='game2'>
         <h3>{live?`LIVE SCORE`:`No live matches happening right now`}</h3>
@@ -167,7 +177,7 @@ const Hock = () => {
         </div>
         <div className='g3'>
         <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div>
-            <div className='g-sub'><button  onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/><button className='rewardH' onClick={() => setIsOpen(true)}>Rewards</button></div>
+            <div className='g-sub'><button  onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/><button className='rewardH' onClick={async() => {await NFT_Gen();setIsOpen(true)}}>Rewards</button></div>
             
         </div>
         <div className='g4'>
