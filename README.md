@@ -1,6 +1,6 @@
 <h1>METABET</h1>
 <p>It is dapp for gambling in different sports like cricket,football and hockey . It also provides extra functions like nft rewards .</p>
-<img  src ="https://github.com/cyberviking5/fantasy/assets/123647814/8efd65a1-65ad-4b1a-8cc7-d176d889ea49" style="height:100px; margin-left:100px" "/>
+<img  src ="https://github.com/cyberviking5/fantasy/blob/master/frontend/src/assets/logo.png" style="height:100px; margin-left:100px" "/>
 <h1>Tech Stack</h1>
 <ul>
   <li>Solidity</li>
