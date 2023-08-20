@@ -20,10 +20,8 @@ const Navbar = () => {
     try {
       if (window.ethereum !== "undefined") {
         await window.ethereum.request({ method: "eth_requestAccounts" });
+        toast.success("CONNECTED")
         setcon("CONNECTED");
-      }
-      if(window.ethereum =="undefined"){
-        toast.success("hi");
       }
     } catch (e) {
       console.log(e);

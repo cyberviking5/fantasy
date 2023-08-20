@@ -26,11 +26,13 @@ const Hock = () => {
               num1
             );
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Loan processed")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
         } catch (e) {
+          toast.warning("Enter money in natural number");
           console.log(e);
         }
       }
@@ -46,11 +48,13 @@ const Hock = () => {
             const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Entered")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.warning("Enter money in natural number");
+          console.log(e)}
       }
     
       async function withdraw()
@@ -63,6 +67,7 @@ const Hock = () => {
             const contract = new ethers.Contract(address4, abi4, signer);
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
+            toast.success("Money withdrawed")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
@@ -84,6 +89,8 @@ const Hock = () => {
             console.log(transactionResponse)
             const number=await contract.getTokenCounter()
             setid(parseInt(number._hex));
+            setIsOpen(true)
+            toast.success("Congratulations on your reward")
         }
         catch(e){console.log(e)}
       }
@@ -177,7 +184,7 @@ const Hock = () => {
         </div>
         <div className='g3'>
         <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div>
-            <div className='g-sub'><button  onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/><button className='rewardH' onClick={async() => {await NFT_Gen();setIsOpen(true)}}>Rewards</button></div>
+            <div className='g-sub'><button  onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/><button className='rewardH' onClick={async() => {await NFT_Gen()}}>Rewards</button></div>
             
         </div>
         <div className='g4'>

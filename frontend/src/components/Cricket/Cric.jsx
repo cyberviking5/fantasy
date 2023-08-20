@@ -30,12 +30,14 @@ const Cric = () => {
               num1
             );
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Loan processed")
             console.log("Done");
           }else{
             console.log("error")
             toast("please install metamask")
           }
         } catch (e) {
+          toast.warning("Enter money in natural number");
           console.log(e);
         }
       }
@@ -51,11 +53,13 @@ const Cric = () => {
             const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Entered")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.warning("Enter money in natural number");
+          console.log(e)}
       }
     
       async function withdraw()
@@ -68,6 +72,7 @@ const Cric = () => {
             const contract = new ethers.Contract(address2, abi2, signer);
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
+            toast.success("Money withdrawed")
             console.log("Done");
           }
           else{
@@ -90,6 +95,8 @@ const Cric = () => {
             console.log(transactionResponse)
             const number=await contract.getTokenCounter()
             setid(parseInt(number._hex));
+            setIsOpen(true)
+            toast.success("Congratulations on your reward")
         }
         catch(e){console.log(e)}
       }
@@ -189,7 +196,7 @@ const Cric = () => {
           <button onClick={enter}>Submit</button>{" "}
           <input type="number" placeholder="Enter the amount" value={num} onChange={(e)=>{setnum(e.target.value)}} />
         </div>
-        <button className="rewardC" onClick={async() => {await NFT_Gen();setIsOpen(true)}} >
+        <button className="rewardC" onClick={async() => {await NFT_Gen()}} >
           Rewards
         </button>
       </div>
