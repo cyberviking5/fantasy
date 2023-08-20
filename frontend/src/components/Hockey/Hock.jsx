@@ -13,6 +13,7 @@ const Hock = () => {
     const [num,setnum] = useState('');
     const [num1,setnum1] = useState('');
     const [id,setid]=useState('0');
+    const [sub,setsub]=useState(true);
 
     async function loan() {
         try {
@@ -48,6 +49,7 @@ const Hock = () => {
             const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
+            setsub(false)
             toast.success("Entered")
             console.log("Done");
           }else{
@@ -67,12 +69,13 @@ const Hock = () => {
             const contract = new ethers.Contract(address4, abi4, signer);
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
+            setsub(true)
             toast.success("Money withdrawed")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.error("Cant withdraw now");console.log(e)}
       }
     
       async function NFT_Gen()
@@ -184,7 +187,7 @@ const Hock = () => {
         </div>
         <div className='g3'>
         <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div>
-            <div className='g-sub'><button  onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/><button className='rewardH' onClick={async() => {await NFT_Gen()}}>Rewards</button></div>
+            <div className='g-sub'>{sub?(<div><button className='sub' onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/></div>):(<div><button className='sub' onClick={withdraw}>Withdraw</button></div>)} <button className='rewardF' onClick={async() => {await NFT_Gen()}}>Rewards</button></div>
             
         </div>
         <div className='g4'>

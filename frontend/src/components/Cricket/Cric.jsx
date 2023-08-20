@@ -14,6 +14,7 @@ const Cric = () => {
   const [num1,setnum1] = useState('');
   const [flag,setflag]=useState('0');
   const [id,setid]=useState('0');
+  const [sub,setsub]=useState(true);
 
   
   const [isOpen, setIsOpen] = useState(false)
@@ -53,6 +54,7 @@ const Cric = () => {
             const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
+            setsub(false)
             toast.success("Entered")
             console.log("Done");
           }else{
@@ -72,13 +74,15 @@ const Cric = () => {
             const contract = new ethers.Contract(address2, abi2, signer);
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
+            setsub(true)
             toast.success("Money withdrawed")
             console.log("Done");
           }
           else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.error("Cant withdraw now")
+          console.log(e)}
       }
     
       async function NFT_Gen()
@@ -193,12 +197,8 @@ const Cric = () => {
           <button>No</button>
         </div>
         <div className="g-sub">
-          <button onClick={enter}>Submit</button>{" "}
-          <input type="number" placeholder="Enter the amount" value={num} onChange={(e)=>{setnum(e.target.value)}} />
+        {sub?(<div><button className='sub' onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/></div>):(<div><button className='sub' onClick={withdraw}>Withdraw</button></div>)} <button className='rewardF' onClick={async() => {await NFT_Gen()}}>Rewards</button>
         </div>
-        <button className="rewardC" onClick={async() => {await NFT_Gen()}} >
-          Rewards
-        </button>
       </div>
       <div className="g4">
         <div className="g-rules">
