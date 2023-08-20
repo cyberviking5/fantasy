@@ -9,6 +9,7 @@ import { ethers, providers } from "ethers";
 import {Link} from 'react-router-dom'
 import NavMod from './NavMod'
 import {motion} from 'framer-motion'
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
@@ -19,6 +20,7 @@ const Navbar = () => {
     try {
       if (window.ethereum !== "undefined") {
         await window.ethereum.request({ method: "eth_requestAccounts" });
+        toast.success("CONNECTED")
         setcon("CONNECTED");
       }
     } catch (e) {

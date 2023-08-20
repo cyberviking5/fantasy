@@ -13,6 +13,7 @@ const Foot = () => {
     const [num,setnum] = useState('');
     const [num1,setnum1] = useState('');
     const [id,setid]=useState('0');
+    const [sub,setsub]=useState(true);
 
     async function loan() {
         try {
@@ -26,11 +27,13 @@ const Foot = () => {
               num1
             );
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Loan processed")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
         } catch (e) {
+          toast.warning("Enter money in natural number");
           console.log(e);
         }
       }
@@ -46,11 +49,14 @@ const Foot = () => {
             const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Entered")
+            setsub(false)
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.warning("Enter money in natural number");
+          console.log(e)}
       }
     
       async function withdraw()
@@ -63,11 +69,13 @@ const Foot = () => {
             const contract = new ethers.Contract(address3, abi3, signer);
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
+            toast.success("Money withdrawed")
+            setsub(true)
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.error("Cant withdraw now");console.log(e)}
       }
     
       async function NFT_Gen()
@@ -84,6 +92,8 @@ const Foot = () => {
             console.log(transactionResponse)
             const number=await contract.getTokenCounter()
             setid(parseInt(number._hex));
+            setIsOpen(true)
+            toast.success("Congratulations on your reward")
         }
         catch(e){console.log(e)}
       }
@@ -163,8 +173,8 @@ const Foot = () => {
             </div>
         </div>
         <div className='g3'>
-            <div className='g-butt'><p>Team1 will win ?</p><button onClick={enter}>Yes</button><button>No</button></div>
-            <div className='g-sub'><button className='sub'>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/> <button className='rewardF' onClick={async() => {await NFT_Gen();setIsOpen(true)}}>Rewards</button></div>
+            <div className='g-butt'><p>Team1 will win ?</p><button>Yes</button><button>No</button></div><div className='g-sub'>
+            {sub?(<div><button className='sub' onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/></div>):(<div><button className='sub' onClick={withdraw}>Withdraw</button></div>)} <button className='rewardF' onClick={async() => {await NFT_Gen()}}>Rewards</button></div>
             
         </div>
         <div className='g4'>

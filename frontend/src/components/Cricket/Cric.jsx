@@ -7,12 +7,14 @@ import {address2,abi2} from '../../contracts_abi_address/Gamble'
 import { ethers, providers } from "ethers";
 import { toast } from 'react-toastify';
 import Modal from './Modal';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cric = () => {
   const [num,setnum] = useState('');
   const [num1,setnum1] = useState('');
   const [flag,setflag]=useState('0');
   const [id,setid]=useState('0');
+  const [sub,setsub]=useState(true);
 
   
   const [isOpen, setIsOpen] = useState(false)
@@ -29,11 +31,14 @@ const Cric = () => {
               num1
             );
             await listenForTransactionMined(transactionResponse, provider);
+            toast.success("Loan processed")
             console.log("Done");
           }else{
-            toast.warning("please install metamask")
+            console.log("error")
+            toast("please install metamask")
           }
         } catch (e) {
+          toast.warning("Enter money in natural number");
           console.log(e);
         }
       }
@@ -49,11 +54,14 @@ const Cric = () => {
             const transactionResponse = await contract.enter({value:ethers.utils.parseEther(num)})
             // await listenForTransactionMined(transactionResponse1, provider);
             await listenForTransactionMined(transactionResponse, provider);
+            setsub(false)
+            toast.success("Entered")
             console.log("Done");
           }else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.warning("Enter money in natural number");
+          console.log(e)}
       }
     
       async function withdraw()
@@ -66,12 +74,15 @@ const Cric = () => {
             const contract = new ethers.Contract(address2, abi2, signer);
             const transactionResponse1=await contract.settleTeamResultWon()
             await listenForTransactionMined(transactionResponse1, provider);
+            setsub(true)
+            toast.success("Money withdrawed")
             console.log("Done");
           }
           else{
             toast.warning("please install metamask")
           }
-        }catch(e){console.log(e)}
+        }catch(e){toast.error("Cant withdraw now")
+          console.log(e)}
       }
     
       async function NFT_Gen()
@@ -88,6 +99,8 @@ const Cric = () => {
             console.log(transactionResponse)
             const number=await contract.getTokenCounter()
             setid(parseInt(number._hex));
+            setIsOpen(true)
+            toast.success("Congratulations on your reward")
         }
         catch(e){console.log(e)}
       }
@@ -184,12 +197,8 @@ const Cric = () => {
           <button>No</button>
         </div>
         <div className="g-sub">
-          <button onClick={enter}>Submit</button>{" "}
-          <input type="number" placeholder="Enter the amount" value={num} onChange={(e)=>{setnum(e.target.value)}} />
+        {sub?(<div><button className='sub' onClick={enter}>Submit</button> <input type="number" placeholder='Enter the amount' value={num} onChange={(e)=>{setnum(e.target.value)}}/></div>):(<div><button className='sub' onClick={withdraw}>Withdraw</button></div>)} <button className='rewardF' onClick={async() => {await NFT_Gen()}}>Rewards</button>
         </div>
-        <button className="rewardC" onClick={async() => {await NFT_Gen();setIsOpen(true)}} >
-          Rewards
-        </button>
       </div>
       <div className="g4">
         <div className="g-rules">
