@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import {  AiOutlineMenu } from "react-icons/ai";
 import "./Navbar.css";
-import Scroller from "../Scroller/Scroller";
 import logo from "../../assets/logo.png";
 import { address, abi } from "../../contracts_abi_address/NFT"
 import { ethers, providers } from "ethers";
@@ -36,10 +35,8 @@ const Navbar = () => {
   };
 
   return (
-    <motion.div 
-    initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    exit={{opacity:0}}>
+    <
+    >
       {nav ? (
         <NavMod cur={cur} handleNav={()=>{setNav()}}></NavMod>
       ) : (
@@ -71,7 +68,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </motion.div>
+    </>
   );
 };
 

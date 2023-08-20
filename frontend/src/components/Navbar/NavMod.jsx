@@ -50,9 +50,7 @@ const s2 = () =>{
 
 
   return ReactDom.createPortal(
-    <motion.div initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    exit={{opacity:0}}>
+    < >
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
       <div className="opened-nav linear duration-500 ">
@@ -104,7 +102,7 @@ const s2 = () =>{
         </div>
       </div>
        
-    </motion.div>,
+    </>,
     document.getElementById('portal')
   )
 }
