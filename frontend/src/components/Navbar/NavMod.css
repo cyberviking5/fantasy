@@ -79,10 +79,11 @@ font-weight: 700;
 .menu-card-list{
     display: flex;
     flex-direction: column;
-    color: #FFF;
+    color: #ffffff;
     font-family: 'Bebas Neue', sans-serif;    font-size: 47.609px;
     font-style: normal;
     line-height: 50px;
+    
 }
 
 .opened-nav-bt{
