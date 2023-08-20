@@ -16,7 +16,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
 }
+html.lenis {
+  height: auto;
+}
 
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 *::selection{
   background-color: #ffffff;
   color: #000000;
