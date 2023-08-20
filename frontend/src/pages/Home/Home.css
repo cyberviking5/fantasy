@@ -54,7 +54,7 @@
 }
 
 .hero-buttons{
-    height:30%;
+    height:35%;
     display: flex;
     gap:2%;
 }
@@ -65,14 +65,16 @@
     background-color: #222;
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
+    font-size: 20px;
     border-radius: 5px;
     color:white;
     text-align: center;
-    padding-top: 3px;
+    padding-top: 7px;
 }
+
 .main-lastline{
     color: #FFF;
-    font-family: Poppins;
+    font-family: 'Poppins', sans-serif;
     font-size: 19.55px;
     font-style: normal;
     font-weight: 900;
