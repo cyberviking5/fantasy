@@ -176,7 +176,7 @@ const Cric = () => {
         <h3>{live ? `LIVE SCORE` : `No live matches happening right now`}</h3>
         <div className="cric-stat">
           <div className="cric-score">
-            <span className="run">{r1}</span>
+            <span className="run">{r1} / {w1}</span>
             <span className="over">({o1})</span>
             <span className="c-name">{t1}</span>
           </div>
@@ -184,7 +184,7 @@ const Cric = () => {
             <span>VS</span>
           </div>
           <div className="cric-score">
-            <span className="run">{r2}</span>
+            <span className="run">{r2} / {w2}</span>
             <span className="over">({o2})</span>
             <span className="c-name">{t2}</span>
           </div>
