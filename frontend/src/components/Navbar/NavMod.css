@@ -13,7 +13,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 50px;
+    padding: 0px 50px;
     font-family: 'Bebas Neue', sans-serif;}
 .opened-nav-head{
     display: flex;
@@ -66,6 +66,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 20px;
 
 }
 
@@ -89,12 +90,12 @@ font-weight: 700;
 .opened-nav-bt{
     display: flex;
     flex-direction: row;
-    padding: 40px 50px 0 50px;
+    padding: 0 50px;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     color: #FFF;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
