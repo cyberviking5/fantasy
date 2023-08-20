@@ -83,5 +83,7 @@
 - ERC-721: Token standard for minting NFTs as rewards.
 
 
+<a href="https://metabet.netlify.app/">Deployed site link</a>
+
 
 
